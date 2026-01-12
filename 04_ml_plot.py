@@ -20,7 +20,7 @@ def simplify_pipeline(name):
     elif 'fslanat6071ants243' in name:
         return 'FSL6071'
     elif 'all_pipelines' in name:
-        return 'Data Augmentation'
+        return 'Pipeline Data Aggregation'
     elif 'ensemble' in name:
         return 'Ensemble'
     else:
@@ -34,9 +34,13 @@ sns.set_style("whitegrid")
 # Create side-by-side plots for Male and Female
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 8))
 
-# Get n_subjects for titles
-male_n = df[df['sex'] == 'M']['n_subjects'].iloc[0]
-female_n = df[df['sex'] == 'F']['n_subjects'].iloc[0]
+# --- MODIFIED: Get both n_subjects and n_samples for titles ---
+male_n_sub = df[df['sex'] == 'M']['n_subjects'].iloc[0]
+male_n_samp = df[df['sex'] == 'M']['n_samples'].iloc[0]
+
+female_n_sub = df[df['sex'] == 'F']['n_subjects'].iloc[0]
+female_n_samp = df[df['sex'] == 'F']['n_samples'].iloc[0]
+# -------------------------------------------------------------
 
 # Define better colors for pipelines (darker colors for better text contrast)
 pipelines = df['pipeline_simple'].unique()
@@ -87,7 +91,9 @@ for model_idx, model in enumerate(models):
                     ha='center', va='center', fontsize=9, fontweight='bold', color='white',
                     rotation=90)
 
-ax1.set_title(f'Male Subjects - Brain Age Prediction MAE (n={int(male_n)})', fontsize=14, fontweight='bold')
+# --- MODIFIED: Update Title to show Subjects AND Scans ---
+ax1.set_title(f'Male Subjects - Brain Age Prediction MAE (n={int(male_n_sub)} subjects, k={int(male_n_samp)} scans)', 
+              fontsize=14, fontweight='bold')
 ax1.set_xlabel('Model Type', fontsize=12)
 ax1.set_ylabel('Mean MAE (years) ± STD', fontsize=12)
 ax1.set_xticks(range(len(models)))
@@ -135,7 +141,9 @@ for model_idx, model in enumerate(models):
                     ha='center', va='center', fontsize=9, fontweight='bold', color='white',
                     rotation=90)
 
-ax2.set_title(f'Female Subjects - Brain Age Prediction MAE (n={int(female_n)})', fontsize=14, fontweight='bold')
+# --- MODIFIED: Update Title to show Subjects AND Scans ---
+ax2.set_title(f'Female Subjects - Brain Age Prediction MAE (n={int(female_n_sub)} subjects, k={int(female_n_samp)} scans)', 
+              fontsize=14, fontweight='bold')
 ax2.set_xlabel('Model Type', fontsize=12)
 ax2.set_ylabel('Mean MAE (years) ± STD', fontsize=12)
 ax2.set_xticks(range(len(models)))
