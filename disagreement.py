@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-Pipeline disagreement heatmap generator - Parallelized & Memory-Safe
-- Strictly respects thread/core limits.
-- Uses float32 for masks (no uint8).
-- Throttled task submission to prevent OOM (Killed) crashes.
-- Restored original logging, summary tables, and interpretation.
-- Handles dataset__subject__session UIDs for multi-session support.
+Pipeline disagreement heatmap generator - Single-Pass Global Intersection
+- REMOVED: Separate Integrity Check phase (starts computations immediately).
+- FIXED: Global Intersection enforced during computation.
+  (If ANY pipeline fails for a subject, that subject is dropped from ALL maps).
+- ARCHITECTURE: Subject-centric processing (Reads files once, computes all pairs).
 """
 
 import os, argparse, numpy as np, nibabel as nib, pandas as pd
@@ -21,12 +20,23 @@ from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
 # -----------------------------
 ROOT_DIR_PATH = os.path.expanduser("~/Desktop/duckysets")
 MNI_TEMPLATE_PATH = os.path.join(ROOT_DIR_PATH, "MNI152_T1_1mm_Brain.nii.gz")
+# NOTE: The order of keys here determines the index for the 4-tuple loaded in the worker
 PIPELINES = {
     "freesurfer741ants243": "aseg_MNI.nii.gz",
     "freesurfer8001ants243": "aseg_MNI.nii.gz",
     "fslanat6071ants243": "subcortical_seg_MNI_ANTs.nii.gz",
     "samseg8001ants243": "seg_MNI.nii.gz",
 }
+# Define the pairs we want to compute
+PAIRS_TO_COMPUTE = [
+    ("freesurfer741ants243", "freesurfer8001ants243"),
+    ("freesurfer741ants243", "fslanat6071ants243"),
+    ("freesurfer741ants243", "samseg8001ants243"),
+    ("freesurfer8001ants243", "fslanat6071ants243"),
+    ("freesurfer8001ants243", "samseg8001ants243"),
+    ("fslanat6071ants243", "samseg8001ants243")
+]
+
 FSL_LABELS = [10, 11, 12, 13, 16, 17, 18, 26, 49, 50, 51, 52, 53, 54, 58]
 TEST_SUBJECTS = None  
 OUTPUT_CSV = os.path.join(ROOT_DIR_PATH, "pipeline_disagreement_statistics.csv")
@@ -38,7 +48,6 @@ BEST_SLICES = [59, 74, 87]
 # Helper functions
 # -----------------------------
 def extract_ids(path, root_dir):
-    """Extract dataset, subject, and session for multi-session support."""
     path_parts = Path(path).parts
     root_parts = Path(root_dir).parts
     for i in range(len(path_parts) - len(root_parts) + 1):
@@ -66,23 +75,58 @@ def find_files_for_pipeline(root, pipeline, target_name):
     return files
 
 # -----------------------------
-# Parallel Worker Function
+# Subject-Centric Worker (The Global Intersection Fix)
 # -----------------------------
-def process_uid_pair(uid, pl1, pl2, pipeline_subj_map, ref_img):
+def process_subject_all_pipelines(uid, pipeline_paths, ref_img, pipeline_names):
+    """
+    1. Loads ALL 4 pipeline images for this subject.
+    2. Performs Integrity Check on ALL 4.
+    3. If any fail -> Returns None (Subject dropped from Global Intersection).
+    4. If all pass -> Computes and returns ALL 6 pairwise XOR maps.
+    """
+    loaded_masks = {}
+    
     try:
-        arr1 = load_and_resample(pipeline_subj_map[pl1][uid], ref_img)
-        arr2 = load_and_resample(pipeline_subj_map[pl2][uid], ref_img)
-        mask1 = np.isin(arr1, FSL_LABELS)
-        mask2 = np.isin(arr2, FSL_LABELS)
-        # Using float32 as requested (NOT uint8)
-        return np.logical_xor(mask1, mask2).astype(np.float32)
-    except:
+        # Step 1: Load and Validate ALL pipelines first
+        for pl_name in pipeline_names:
+            fpath = pipeline_paths.get(pl_name)
+            if not fpath: return None # Should not happen given initial intersection, but safe
+            
+            # Load
+            data = load_and_resample(fpath, ref_img)
+            
+            # --- INTEGRITY CHECK ---
+            # A. Check for empty mask
+            if np.sum(data) == 0:
+                return None
+            
+            # B. Check for missing labels (partial failure)
+            unique_vals = np.unique(data)
+            # Efficient subset check
+            if not set(FSL_LABELS).issubset(set(unique_vals)):
+                return None
+            # -----------------------
+            
+            # Convert to boolean mask for XOR operations
+            loaded_masks[pl_name] = np.isin(data, FSL_LABELS)
+
+        # Step 2: Compute All Pairs (only if we survived Step 1)
+        results = {}
+        for (p1, p2) in PAIRS_TO_COMPUTE:
+            # XOR and cast to float32 for accumulation
+            xor_map = np.logical_xor(loaded_masks[p1], loaded_masks[p2]).astype(np.float32)
+            results[f"{p1}_vs_{p2}"] = xor_map
+            
+        return results
+
+    except Exception:
+        # Any file read error or crash -> Subject is dropped
         return None
 
 # -----------------------------
 # Visualization Function
 # -----------------------------
-def create_visualization(disagreement_maps, vmax_mode, ref_img, mni_template, n_matched, max_dis_values):
+def create_visualization(disagreement_maps, vmax_mode, ref_img, mni_template, global_n, max_dis_values):
     all_vals = np.concatenate([dm.ravel() for dm in disagreement_maps.values()])
     if vmax_mode == 'percentile99':
         vmax = np.percentile(all_vals, 99)
@@ -98,15 +142,26 @@ def create_visualization(disagreement_maps, vmax_mode, ref_img, mni_template, n_
     for r, sl_idx in enumerate(BEST_SLICES[::-1]):
         mni_z = nib.affines.apply_affine(ref_img.affine, [[0, 0, sl_idx]])[0][2]
         slice_label = f"Slice {sl_idx} z={mni_z:.1f}mm"
-        for c, (comp_name, dm) in enumerate(disagreement_maps.items()):
+        
+        # Use a fixed order for consistency
+        sorted_keys = sorted(disagreement_maps.keys())
+        
+        for c, comp_name in enumerate(sorted_keys):
+            dm = disagreement_maps[comp_name]
             ax = axes[r, c]
             ax.imshow(np.rot90(mni_template[:, :, sl_idx]), cmap='gray', alpha=0.7)
             im = ax.imshow(np.rot90(dm[:, :, sl_idx]), cmap="hot", vmin=0, vmax=vmax, alpha=0.8)
-            if c == 0: ax.text(-0.15, 0.5, slice_label, fontsize=9, rotation=90, va='center', ha='center', transform=ax.transAxes)
+            
+            if c == 0: 
+                ax.text(-0.15, 0.5, slice_label, fontsize=9, rotation=90, va='center', ha='center', transform=ax.transAxes)
+            
             if r == 0:
                 p1, p2 = comp_name.split("_vs_")
                 mapping = {'freesurfer741ants243': 'FS741', 'freesurfer8001ants243': 'FS8001', 'fslanat6071ants243': 'FSL6071', 'samseg8001ants243': 'Samseg8'}
-                ax.set_title(f"{mapping.get(p1,p1)} vs {mapping.get(p2,p2)}\nn={n_matched}", fontsize=10, pad=10)
+                
+                # Global N is used here
+                ax.set_title(f"{mapping.get(p1,p1)} vs {mapping.get(p2,p2)}\nn={global_n}", fontsize=10, pad=10)
+            
             ax.axis("off")
 
     cbar_ax = fig.add_axes([0.92, 0.15, 0.02, 0.7])
@@ -128,102 +183,134 @@ def create_visualization(disagreement_maps, vmax_mode, ref_img, mni_template, n_
 # -----------------------------
 def main(max_threads=10):
     pipeline_subj_map = {}
-    for pl, fname in PIPELINES.items():
+    ordered_pipeline_names = list(PIPELINES.keys())
+    
+    print("Indexing files...")
+    for pl in ordered_pipeline_names:
+        fname = PIPELINES[pl]
         files = find_files_for_pipeline(ROOT_DIR_PATH, pl, fname)
         subj_map = {f"{extract_ids(f, ROOT_DIR_PATH)[0]}__{extract_ids(f, ROOT_DIR_PATH)[1]}__{extract_ids(f, ROOT_DIR_PATH)[2]}": f for f in files}
         pipeline_subj_map[pl] = subj_map
-        print(f"{pl}: found {len(files)} total files, {len(subj_map)} unique matched scans")
+        print(f"  {pl}: found {len(files)} total files")
 
+    # 1. Initial Match (File Existence Only)
     matched_uids = sorted(list(set.intersection(*[set(m.keys()) for m in pipeline_subj_map.values()])))
-    print(f"\n Found {len(matched_uids)} matched scans with all 4 pipelines available")
+    print(f"\nFound {len(matched_uids)} candidates (files exist in all 4). Starting computations...")
+    
     if not matched_uids: raise RuntimeError("No matched scans found.")
-
-    ref_img = nib.load(pipeline_subj_map[list(PIPELINES.keys())[0]][matched_uids[0]])
-    print(f"\nReference chosen: {ref_img.shape}")
-
+    
+    # Load Reference
+    ref_img = nib.load(pipeline_subj_map[ordered_pipeline_names[0]][matched_uids[0]])
+    
     print("Loading MNI template...")
     mni_template_img = nib.load(MNI_TEMPLATE_PATH)
     mni_template_resampled = resample_from_to(mni_template_img, (ref_img.shape, ref_img.affine))
     mni_template = mni_template_resampled.get_fdata()
-    print(f"MNI template shape: {mni_template.shape} (resampled to match reference)")
 
-    pipeline_pairs = [("freesurfer741ants243", "freesurfer8001ants243"), ("freesurfer741ants243", "fslanat6071ants243"), ("freesurfer741ants243", "samseg8001ants243"), ("freesurfer8001ants243", "fslanat6071ants243"), ("freesurfer8001ants243", "samseg8001ants243"), ("fslanat6071ants243", "samseg8001ants243")]
-
-    disagreement_maps, disagreement_stats, max_dis_values = {}, [], {}
-
-    print("\n Computing pipeline disagreements...")
-
-    for pl1, pl2 in pipeline_pairs:
-        comp_name = f"{pl1}_vs_{pl2}"
-        print(f"\nComputing {pl1} vs {pl2}...")
-        acc_map = np.zeros(ref_img.shape, dtype=np.float32)
-        valid_n = 0
+    # Initialize Accumulators for all 6 pairs
+    accumulators = {f"{p1}_vs_{p2}": np.zeros(ref_img.shape, dtype=np.float32) for p1, p2 in PAIRS_TO_COMPUTE}
+    valid_global_n = 0
+    
+    print("\nComputing Disagreement Maps (Subject-by-Subject)...")
+    
+    # ---------------------------------------------------------
+    # MAIN LOOP - Subject Centric (Enforces Global Intersection)
+    # ---------------------------------------------------------
+    with ThreadPoolExecutor(max_workers=max_threads) as executor:
+        active_futures = set()
+        uid_iter = iter(matched_uids)
         
-        # MEMORY-SAFE PARALLEL LOOP: Strictly respects worker count and throttles queue
-        with ThreadPoolExecutor(max_workers=max_threads) as executor:
-            active_futures = set()
-            uid_iter = iter(matched_uids)
-            
-            # Pre-fill queue with limited tasks (2x worker count)
-            for _ in range(max_threads * 2):
-                try:
-                    uid = next(uid_iter)
-                    active_futures.add(executor.submit(process_uid_pair, uid, pl1, pl2, pipeline_subj_map, ref_img))
-                except StopIteration: break
+        # Helper to submit a task
+        def submit_next():
+            try:
+                uid = next(uid_iter)
+                # Pack all paths for this subject
+                paths = {pl: pipeline_subj_map[pl][uid] for pl in ordered_pipeline_names}
+                return executor.submit(process_subject_all_pipelines, uid, paths, ref_img, ordered_pipeline_names)
+            except StopIteration:
+                return None
 
-            pbar = tqdm(total=len(matched_uids), desc=f"{pl1[:10]} vs {pl2[:10]}")
-            while active_futures:
-                # Wait for the next task to finish
-                done, active_futures = wait(active_futures, return_when=FIRST_COMPLETED)
-                for f in done:
-                    res = f.result()
-                    if res is not None:
-                        acc_map += res
-                        valid_n += 1
-                    pbar.update(1)
-                    # Submit a new task to fill the vacancy
-                    try:
-                        uid = next(uid_iter)
-                        active_futures.add(executor.submit(process_uid_pair, uid, pl1, pl2, pipeline_subj_map, ref_img))
-                    except StopIteration: pass
-            pbar.close()
+        # Seed the queue
+        for _ in range(max_threads * 2):
+            f = submit_next()
+            if f: active_futures.add(f)
+
+        pbar = tqdm(total=len(matched_uids), desc="Processing Subjects")
         
-        if valid_n > 0:
-            acc_map /= valid_n
-            disagreement_maps[comp_name] = acc_map
-            max_dis_values[comp_name] = float(np.max(acc_map))
+        while active_futures:
+            done, active_futures = wait(active_futures, return_when=FIRST_COMPLETED)
             
-            stats = {
-                'comparison': comp_name,
-                'n_subjects': valid_n,
-                'mean_disagreement': float(np.mean(acc_map)),
-                'max_disagreement': max_dis_values[comp_name],
-                'median_disagreement': float(np.median(acc_map)),
-                'std_disagreement': float(np.std(acc_map)),
-                'n_voxels_high_disagreement': int(np.sum(acc_map >= 0.5)),
-                'n_voxels_medium_disagreement': int(np.sum(acc_map >= 0.25)),
-                'n_voxels_any_disagreement': int(np.sum(acc_map > 0)),
-                'total_voxels': int(np.prod(acc_map.shape))
-            }
-            disagreement_stats.append(stats)
-            print(f"  Mean disagreement: {stats['mean_disagreement']:.3f} | Max: {stats['max_disagreement']:.3f} | >=50%: {stats['n_voxels_high_disagreement']}")
+            for f in done:
+                res = f.result()
+                if res is not None:
+                    # If res is not None, the subject passed integrity checks for ALL 4 pipelines
+                    valid_global_n += 1
+                    # Add results to the global accumulators
+                    for pair_key, xor_map in res.items():
+                        accumulators[pair_key] += xor_map
+                
+                pbar.update(1)
+                
+                # Submit new task
+                new_f = submit_next()
+                if new_f: active_futures.add(new_f)
+                
+        pbar.close()
+
+    print(f"\nComputation Complete.")
+    print(f"Final Valid Global N: {valid_global_n} (subjects valid in ALL pipelines)")
+    print(f"Dropped: {len(matched_uids) - valid_global_n} subjects during processing.")
+    
+    if valid_global_n == 0:
+        raise RuntimeError("All subjects failed validation! Check your data/labels.")
+
+    # -----------------------------
+    # Post-Processing & Saving
+    # -----------------------------
+    disagreement_maps = {}
+    disagreement_stats = []
+    max_dis_values = {}
+
+    for comp_name, acc_map in accumulators.items():
+        # Normalize by the GLOBAL valid N
+        acc_map /= valid_global_n
+        disagreement_maps[comp_name] = acc_map
+        max_val = float(np.max(acc_map))
+        max_dis_values[comp_name] = max_val
+        
+        stats = {
+            'comparison': comp_name,
+            'n_subjects': valid_global_n, # Identical for all
+            'mean_disagreement': float(np.mean(acc_map)),
+            'max_disagreement': max_val,
+            'median_disagreement': float(np.median(acc_map)),
+            'std_disagreement': float(np.std(acc_map)),
+            'n_voxels_high_disagreement': int(np.sum(acc_map >= 0.5)),
+            'n_voxels_medium_disagreement': int(np.sum(acc_map >= 0.25)),
+            'n_voxels_any_disagreement': int(np.sum(acc_map > 0)),
+            'total_voxels': int(np.prod(acc_map.shape))
+        }
+        disagreement_stats.append(stats)
 
     pd.DataFrame(disagreement_stats).to_csv(OUTPUT_CSV, index=False)
     
-    # Restored SUMMARY TABLE
-    print("\n" + "="*100 + "\nPIPELINE DISAGREEMENT SUMMARY\n" + "="*100)
+    print("\n" + "="*100 + "\nPIPELINE DISAGREEMENT SUMMARY (Global Intersection)\n" + "="*100)
     for s in disagreement_stats:
-        print(f"{s['comparison']:45} | Mean: {s['mean_disagreement']:5.3f} | Max: {s['max_disagreement']:5.3f} | >=50%: {s['n_voxels_high_disagreement']:6d}")
+        print(f"{s['comparison']:45} | Mean: {s['mean_disagreement']:5.3f} | N: {s['n_subjects']}")
 
     print("\n" + "="*80 + "\nCREATING VISUALIZATIONS\n" + "="*80)
-    create_visualization(disagreement_maps, 'percentile99', ref_img, mni_template, len(matched_uids), max_dis_values)
-    create_visualization(disagreement_maps, 'fullrange', ref_img, mni_template, len(matched_uids), max_dis_values)
+    
+    create_visualization(disagreement_maps, 'percentile99', ref_img, mni_template, valid_global_n, max_dis_values)
+    create_visualization(disagreement_maps, 'fullrange', ref_img, mni_template, valid_global_n, max_dis_values)
 
     print("\nCreating histogram figure...")
     fig, axes = plt.subplots(2, 3, figsize=(15, 10))
     axes = axes.flatten()
     all_nonzero = []
-    for idx, (name, dm) in enumerate(disagreement_maps.items()):
+    
+    sorted_keys = sorted(disagreement_maps.keys())
+    for idx, name in enumerate(sorted_keys):
+        dm = disagreement_maps[name]
         ax = axes[idx]
         nonzero = dm.ravel()[dm.ravel() > 0]
         all_nonzero.extend(nonzero)
