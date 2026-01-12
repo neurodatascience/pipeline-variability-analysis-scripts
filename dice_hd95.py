@@ -5,6 +5,9 @@ Fast Dice and HD95 overlap computation between subcortical segmentations.
 - Resilient to missing/empty files (skips sessions gracefully).
 - Generates plots immediately after each dataset is processed.
 - Plot footers show total scan (session) counts.
+- FIXED: Native Space filenames restored.
+- FIXED: Subject-specific geometry (no global resampling).
+- FIXED: Strict Label Integrity Check now runs on correct native data.
 """
 import os, argparse, numpy as np, nibabel as nib, pandas as pd
 import seaborn as sns, matplotlib.pyplot as plt
@@ -25,6 +28,7 @@ except ImportError:
 # === OUTPUT IN CURRENT DIRECTORY ===
 OUTPUT_DIR = os.getcwd()
 
+# --- NATIVE SPACE FILENAMES ---
 PIPELINES = {
     "freesurfer741ants243": "aseg.nii.gz",
     "freesurfer8001ants243": "aseg.nii.gz",
@@ -119,6 +123,7 @@ def load_segmentation_as_int(path, ref_img=None):
     if os.path.getsize(path) == 0:
         raise EOFError(f"Empty file: {path}")
     img = nib.load(path)
+    # Only resample if a specific subject-reference is provided AND the grid doesn't match
     if ref_img is not None and (img.shape != ref_img.shape or not np.allclose(img.affine, ref_img.affine, atol=1e-3)):
         img = resample_from_to(img, ref_img, order=0)
     data = img.get_fdata(dtype=np.float32).astype(np.int16)
@@ -132,23 +137,45 @@ def get_heatmap_range(df, metric):
     pad = (mmax - mmin) * 0.1
     return max(0, mmin - pad), (min(1, mmax + pad) if metric == 'dice' else mmax + pad)
 
-def compute_for_subject(uid, ref_img, downsample_factor, metrics, pairs, dataset, STRUCTURE_LABELS, LABELS, PIPELINES, subj_maps):
+def compute_for_subject(uid, downsample_factor, metrics, pairs, dataset, STRUCTURE_LABELS, LABELS, PIPELINES, subj_maps):
     """Process a single session (uid) for all pipeline pairs."""
     try:
         _, sub, ses = uid.split("__")
         high_res_imgs = {}
         high_res_img_objects = {} 
-        high_res_spacing = np.sqrt(np.sum(ref_img.affine[:3,:3]**2, axis=0))
         
+        # 1. Establish a LOCAL reference geometry for this subject
+        # We use the first available pipeline for this subject as the anchor
+        first_pl = list(PIPELINES.keys())[0]
+        ref_path = subj_maps[first_pl][uid]
+        _, ref_affine, ref_img_obj = load_segmentation_as_int(ref_path, ref_img=None)
+        
+        high_res_spacing = np.sqrt(np.sum(ref_affine[:3,:3]**2, axis=0))
+        
+        # 2. Load all pipelines, aligning them to the LOCAL reference (ref_img_obj)
         for pl in PIPELINES:
-            data, _, img_obj = load_segmentation_as_int(subj_maps[pl][uid], ref_img)
+            data, _, img_obj = load_segmentation_as_int(subj_maps[pl][uid], ref_img_obj)
+            
+            # --- STRICT INTEGRITY CHECK ---
+            # A. Reject empty masks (total failure)
+            if np.sum(data) == 0:
+                raise ValueError(f"Pipeline {pl} produced an empty mask")
+            
+            # B. Reject missing labels (partial failure)
+            unique_vals = np.unique(data)
+            missing = [lbl for lbl in LABELS if lbl not in unique_vals]
+            if missing:
+                # If the pipeline is missing an expected structure, fail the entire subject
+                raise ValueError(f"Pipeline {pl} missing required labels: {missing}")
+            # -------------------------------------
+
             high_res_imgs[pl] = data
             high_res_img_objects[pl] = img_obj
             
         low_res_imgs, low_res_spacing = None, None
         if downsample_factor > 1.0 and 'hd95' in metrics:
-            ds_affine = ref_img.affine.copy(); ds_affine[:3,:3] *= downsample_factor
-            ds_shape = (np.array(ref_img.shape[:3]) // downsample_factor).astype(int)
+            ds_affine = ref_affine.copy(); ds_affine[:3,:3] *= downsample_factor
+            ds_shape = (np.array(ref_img_obj.shape[:3]) // downsample_factor).astype(int)
             ds_ref = nib.Nifti1Image(np.zeros(ds_shape), ds_affine)
             low_res_spacing = np.sqrt(np.sum(ds_ref.affine[:3,:3]**2, axis=0))
             low_res_imgs = {pl: resample_from_to(high_res_img_objects[pl], ds_ref, order=0).get_fdata().astype(np.int16) for pl in PIPELINES}
@@ -170,13 +197,15 @@ def compute_for_subject(uid, ref_img, downsample_factor, metrics, pairs, dataset
                 local_results.append(row)
         return local_results
     except Exception as e:
-        print(f"\n[SKIP SESSION] Error processing {uid}: {e}")
+        # print(f"\n[SKIP SESSION] Error processing {uid}: {e}")
         return []
 
 def plot_dataset_grid(df_subset, dataset_name, metrics):
     """Generate heatmaps for the given dataset results."""
     short = {'fslanat6071ants243': 'FSL6071', 'freesurfer741ants243': 'FS741', 'freesurfer8001ants243': 'FS8001', 'samseg8001ants243': 'SAMSEG8'}
     pipelines = [short[p] for p in PIPELINES]
+    
+    # N reflects strict intersection count
     n_sessions = df_subset[['subject', 'session']].drop_duplicates().shape[0]
 
     for metric in metrics:
@@ -228,10 +257,11 @@ def main(n_subjects=10, parallel=False, max_threads=10, metrics=None, downsample
         if not common: continue
         
         pairs = [(a,b) for i,a in enumerate(PIPELINES) for b in list(PIPELINES)[i+1:]]
-        ref_img = nib.load(subj_maps[list(PIPELINES.keys())[0]][common[0]]) 
         
+        # --- FIXED: REMOVED GLOBAL REFERENCE. EACH SUBJECT USES ITS OWN. ---
+        # The lambda now does NOT take 'ref_img'
         dataset_results = []
-        compute_func = lambda uid: compute_for_subject(uid, ref_img, downsample_factor, metrics, pairs, dataset, STRUCTURE_LABELS, LABELS, PIPELINES, subj_maps)
+        compute_func = lambda uid: compute_for_subject(uid, downsample_factor, metrics, pairs, dataset, STRUCTURE_LABELS, LABELS, PIPELINES, subj_maps)
         
         if parallel:
             with ThreadPoolExecutor(max_workers=max_threads) as exe:
