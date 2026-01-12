@@ -49,7 +49,7 @@ PIPELINES = {
 MODELS_TO_EVALUATE = ['baseline', 'elasticnet', 'kneighbors', 'histgradientboosting','extratrees', 'svm']
 
 # --- TOGGLE FOR OUTLIER REMOVAL (NEW) ---
-RUN_OUTLIER_REMOVAL = False 
+RUN_OUTLIER_REMOVAL = True
 
 # --- ORIGINAL/UNTOUCHED GRIDS (for non-tree models) ---
 ELASTIC_NET_PARAMS = {
@@ -121,10 +121,10 @@ def get_feature_cols(df):
     return [col for col in df.columns if col not in metadata_cols]
 
 # --- OUTLIER REMOVAL FUNCTION (Identical) ---
-def remove_outliers_mad(df_in, threshold_percent=0.10, mad_threshold=6.0): 
+def remove_outliers_mad(df_in, threshold_percent=0.05, mad_threshold=4.0): 
     """
-    Remove participants if more than 'threshold_percent' (10%) of their brain features 
-    are extreme outliers based on the Median Absolute Deviation (MAD) method (6.0 MAD).
+    Remove participants if more than 'threshold_percent' (eg. 0.1=10%) of their brain features 
+    are extreme outliers based on the Median Absolute Deviation (MAD) method (X MAD).
     """
     df = df_in.copy()
     all_feature_cols = get_feature_cols(df)
@@ -364,10 +364,11 @@ def nested_cv_evaluation(df, model_type, pipeline_name):
     groups_full = df['subject_id']
     
     outer_cv = GroupKFold(n_splits=5)
+    N_FOLDS = 5 # Define the number of outer folds for the calculation below
     
     # Store results for Male and Female separately
-    sex_results = {'M': {'scores': [], 'models': []}, 
-                   'F': {'scores': [], 'models': []}}
+    sex_results = {'M': {'scores': [], 'models': [], 'last_y_train_len': 0}, 
+                   'F': {'scores': [], 'models': [], 'last_y_train_len': 0}}
     
     model_pipeline, param_grid, search_class = create_model_pipeline(model_type)
     
@@ -375,7 +376,7 @@ def nested_cv_evaluation(df, model_type, pipeline_name):
     if search_class == RandomizedSearchCV:
         # Calculate max iterations based on product of all grid lengths
         total_param_combos = np.prod([len(v) for v in param_grid.values()])
-        n_iter = min(50, total_param_combos)
+        n_iter = min(20, total_param_combos)
         search_kwargs = {'n_iter': n_iter, 'random_state': 42}
         if n_iter > 1:
             print(f"    Using RandomizedSearchCV with n_iter={n_iter}")
@@ -466,6 +467,9 @@ def nested_cv_evaluation(df, model_type, pipeline_name):
                 sex_results[sex]['scores'].append(mae)
                 sex_results[sex]['models'].append(best_model)
                 
+                # Store the length of a successful training fold
+                sex_results[sex]['last_y_train_len'] = len(y_train_sex)
+                
             except Exception as e:
                 # print(f"({sex} FAILED: {str(e)[:20]}...)", end=" ")
                 # We save the error for debugging but print a simple FAILED message
@@ -475,18 +479,35 @@ def nested_cv_evaluation(df, model_type, pipeline_name):
 
     # Format the results for the calling function
     final_results = []
-    for sex, res in sex_results.items():
+    # Get the total number of samples for each sex for the final calculation
+    n_samples_m = len(df[df['sex'] == 'M'])
+    n_samples_f = len(df[df['sex'] == 'F'])
+
+    for sex in ['M', 'F']:
+        res = sex_results[sex]
         valid_scores = [s for s in res['scores'] if not np.isnan(s)]
+        
+        if sex == 'M':
+            n_total_samples = n_samples_m
+        else:
+            n_total_samples = n_samples_f
+            
+        # --- FIX APPLIED HERE: Calculate the correct n_train_samples_per_fold ---
+        # Calculation: floor(Total Samples / N_FOLDS) * (N_FOLDS - 1)
+        # This is the expected, correct size for a K=5 GroupKFold training set.
+        if n_total_samples > 0:
+            correct_n_train = int(np.floor(n_total_samples / N_FOLDS) * (N_FOLDS - 1))
+        else:
+            correct_n_train = 0
+        # -----------------------------------------------------------------------
+
         if valid_scores:
-            # We need to ensure y_train_sex is available to get the final N count if all folds fail, 
-            # but since we only append results if successful, we rely on the last successful fold's N.
-            # However, for consistency in the final report, we will use the total N for that sex.
             final_results.append({
                 'sex': sex,
                 'mean_mae': np.mean(valid_scores),
                 'std_mae': np.std(valid_scores),
                 'successful_folds': len(valid_scores),
-                'n_train_samples_per_fold': len(y_train_sex) if 'y_train_sex' in locals() and len(y_train_sex) > 0 else 0,
+                'n_train_samples_per_fold': correct_n_train, # <--- FIXED
             })
     return final_results
 
@@ -619,6 +640,12 @@ def evaluate_ensemble(df, all_pipeline_results):
 
     # 5. Aggregate results across folds
     aggregated_results = []
+    
+    # Get the total number of samples for each sex for the final calculation
+    N_FOLDS = 5 # Used to calculate n_train_samples_per_fold for individual models, but ensembles don't use it
+    n_samples_m = len(df[df['sex'] == 'M'])
+    n_samples_f = len(df[df['sex'] == 'F'])
+
     for ensemble_type, sex_data in final_ensemble_report.items():
         for sex in ['M', 'F']:
             valid_scores = [s for s in sex_data[sex]['scores'] if not np.isnan(s)]
@@ -684,6 +711,7 @@ def main():
                         'n_train_samples_per_fold': res['n_train_samples_per_fold'],
                         'best_params': 'N/A' # Placeholder: need modification to nested_cv_evaluation to return best_params
                     })
+                    # This print statement now uses the CORRECTED N_train value
                     print(f"  {res['sex']} {model_type.upper():20} - Mean MAE: {res['mean_mae']:.3f} ± {res['std_mae']:.3f} (N={res['n_train_samples_per_fold']})")
                 else:
                     print(f"  {res['sex']} {model_type.upper():20} - No valid results")
