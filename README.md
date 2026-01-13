@@ -25,7 +25,7 @@ Where the datasetX_nipoppy directory is a Nipoppy-formatted dataset (you only ne
     * Outputs: morphological_features_mni.csv containing a high-dimensional feature matrix (Volumes, Surface Area, Sphericity, Compactness, and PCA Eigenvalues) indexed by subject and session.
     * Implements multi-core parallel processing with robust error handling to skip corrupt files without crashing the execution queue (eg: python3 01_ml_features_MNI.py --parallel --max_threads 4 --features volume pca-eigenvalue-1 pca-eigenvalue-2)
 
-* **01_ml_features_ASEG.py and 01_ml_features_NATIVE.py**: Old scripts I don't really use now. ASEG ingests from the volume outputs (df_wide.csv) of NeuroCI, and NATIVE is siilar to MNI but instead ingests the native-space scans from the Nipoppy datasets.
+* **01_ml_features_ASEG.py and 01_ml_features_NATIVE.py**: Old scripts I don't really use now. ASEG ingests from the volume outputs (df_wide.csv) of NeuroCI, and NATIVE is similar to MNI but instead ingests the native-space scans from the Nipoppy datasets.
 
 * **02_ml_age_sex.py** - Demographic Integration: This script is meant to be run after one of the 01 scripts above.
     *  What it does: Performs complex data wrangling to align neuroimaging features with phenotypic data. It features custom regex and mapping logic to handle inconsistent session naming conventions (e.g., matching NAPFU12 to ses-FU12) across diverse datasets like PREVENT-AD and NKI.
