@@ -44,7 +44,7 @@ Where the datasetX_nipoppy directory is a Nipoppy-formatted dataset (you only ne
     * What it does: Generates publication-ready visualizations of the model performance.
     * Inputs: The results CSV from the modeling script.
     * Outputs: A side-by-side comparison plot (brain_age_side_by_side_sexes.png) showing Mean Absolute Error (MAE) across all models, pipelines, and sexes.
-    * utomatically parses metadata to display sample sizes ($n$) and scan counts ($k$) in plot headers.
+    * Automatically parses metadata to display sample sizes ($n$) and scan counts ($k$) in plot headers.
 
 * **dice_hd95.py** - Segmentation Overlap Metrics:
     * What it does: Computes standard geometric validation metrics—Dice Similarity Coefficient (DSC) and 95th Percentile Hausdorff Distance (HD95)—to assess the reliability of segmentations across pipelines.
