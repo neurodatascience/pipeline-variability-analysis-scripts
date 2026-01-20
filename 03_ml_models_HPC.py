@@ -369,16 +369,19 @@ def nested_cv_evaluation(df, model_type, experiment_name):
     """
     Standard evaluation for a single experiment (feature set).
     """
-    # Use simple print format for logs since we are running in parallel
-    print(f"  [START] {model_type} on {experiment_name}", flush=True)
-    
     features = get_features_for_experiment(df, experiment_name)
+    
+    # --- START LOGGING ---
+    n_m = len(df[df['sex'] == 'M'])
+    n_f = len(df[df['sex'] == 'F'])
+    print(f"  [START] {model_type} on {experiment_name} | Feats: {len(features)} | N_M: {n_m}, N_F: {n_f}", flush=True)
+    # ---------------------
+
     if len(features) == 0 and model_type != 'baseline':
         print(f"    WARNING: No features found for {experiment_name}")
         return []
     
-    # --- IMPORTANT: Do NOT dropna() here. Use df as-is to ensure consistent N across models ---
-    # The df passed in has already been strictly cleaned in load_and_preprocess_data
+    # Use df as-is (already strictly cleaned)
     cols_needed = features + ['dataset', 'sex', 'age', 'subject_id']
     df_exp = df[cols_needed].copy()
     
@@ -401,13 +404,9 @@ def nested_cv_evaluation(df, model_type, experiment_name):
     if search_class == RandomizedSearchCV:
         total_param_combos = np.prod([len(v) for v in param_grid.values()])
         n_iter = min(20, total_param_combos)
-        # CRITICAL: n_jobs=1 to prevent oversubscription in parallel execution
         search_kwargs = {'n_iter': n_iter, 'random_state': 42, 'n_jobs': 1}
 
     for fold, (train_idx, test_idx) in enumerate(outer_cv.split(X_full, y_full, groups_full)):
-        # --- VERBOSE LOGGING START (Matched to 03_ml_models.py) ---
-        print(f"    Fold {fold + 1} ({experiment_name}/{model_type}):", end=" ", flush=True)
-        
         X_train_full, X_test_full = X_full.iloc[train_idx], X_full.iloc[test_idx]
         y_train_full, y_test_full = y_full.iloc[train_idx], y_full.iloc[test_idx]
         groups_train = groups_full.iloc[train_idx]
@@ -425,7 +424,6 @@ def nested_cv_evaluation(df, model_type, experiment_name):
             datasets_test_sex = X_test_sex['dataset']
 
             if len(y_train_sex) < 2 or len(y_test_sex) == 0:
-                print(f"({sex} - Too few samples)", end=" ", flush=True)
                 continue
                 
             try:
@@ -450,23 +448,17 @@ def nested_cv_evaluation(df, model_type, experiment_name):
                     y_pred = search.best_estimator_.predict(test_normalized[features].values)
                     mae = mean_absolute_error(y_test_sex, y_pred)
                     
-                    # Log best params
-                    best_params_str = ", ".join([f"{k.split('__')[-1]}: {v}" for k, v in search.best_params_.items()])
-                    print(f"({sex} MAE={mae:.3f}, Params: {best_params_str[:30]}..., N={len(y_train_sex)})", end=" ", flush=True)
-                    
                 else:
                     baseline = MeanPredictor().fit(None, y_train_sex)
                     y_pred = baseline.predict(X_test_sex)
                     mae = mean_absolute_error(y_test_sex, y_pred)
-                    print(f"({sex} MAE={mae:.3f}, Mean={baseline.mean_age:.1f}, N={len(y_train_sex)})", end=" ", flush=True)
                 
                 sex_results[sex]['scores'].append(mae)
                 sex_results[sex]['train_size'] = len(y_train_sex) 
                 
             except Exception as e:
-                print(f"({sex} FAILED: {str(e)[:20]})", end=" ", flush=True)
+                # Silently skip failed folds to keep output clean, rely on summary
                 continue
-        print("", flush=True) # Newline after fold
 
     final_results = []
     for sex in ['M', 'F']:
@@ -480,21 +472,22 @@ def nested_cv_evaluation(df, model_type, experiment_name):
                 'std_mae': np.std(scores),
                 'scores': scores,
                 'successful_folds': len(scores),
-                # Corrected Key Name
                 'n_train_samples_per_fold': sex_results[sex]['train_size']
             })
             
-    print(f"  [DONE] {model_type} on {experiment_name} -> M: {len(sex_results['M']['scores'])} folds, F: {len(sex_results['F']['scores'])} folds", flush=True)
+    print(f"  [DONE] {model_type} on {experiment_name}", flush=True)
     return final_results
 
 # --- ENSEMBLE EVALUATION (PARALLELIZED) ---
 def evaluate_single_ensemble_model(df, model_type):
-    """
-    Runs the ensemble logic for a single model type. 
-    """
     if model_type == 'baseline': return []
     
-    print(f"  [START ENSEMBLE] {model_type}...", flush=True)
+    # --- START LOGGING ---
+    n_m = len(df[df['sex'] == 'M'])
+    n_f = len(df[df['sex'] == 'F'])
+    print(f"  [START ENSEMBLE] {model_type} | Feats: Variable | N_M: {n_m}, N_F: {n_f}", flush=True)
+    # ---------------------
+    
     sex_scores = {'M': [], 'F': []}
     
     groups = df['subject_id']
@@ -502,8 +495,6 @@ def evaluate_single_ensemble_model(df, model_type):
     outer_cv = GroupKFold(n_splits=n_splits)
     
     for fold, (train_idx, test_idx) in enumerate(outer_cv.split(df, df['age'], groups)):
-        print(f"    Ensemble Fold {fold + 1} ({model_type}):", end=" ", flush=True)
-        
         X_train_full, X_test_full = df.iloc[train_idx], df.iloc[test_idx]
         y_train_full, y_test_full = df['age'].iloc[train_idx], df['age'].iloc[test_idx]
         groups_train = groups.iloc[train_idx]
@@ -530,7 +521,6 @@ def evaluate_single_ensemble_model(df, model_type):
                 features = get_features_for_experiment(df, exp_name)
                 if len(features) == 0: continue
                 
-                # Assume complete cases because of strict loading
                 X_comp_train = X_train_sex
                 y_comp_train = y_train_sex
                 grps_comp_train = groups_train_sex
@@ -551,7 +541,6 @@ def evaluate_single_ensemble_model(df, model_type):
                     search_kwargs = {}
                     if search_class == RandomizedSearchCV:
                         n_iter = min(10, np.prod([len(v) for v in param_grid.values()]))
-                        # Force n_jobs=1
                         search_kwargs = {'n_iter': n_iter, 'random_state': 42, 'n_jobs': 1}
                     
                     inner_splits = min(3, len(y_comp_train))
@@ -562,7 +551,6 @@ def evaluate_single_ensemble_model(df, model_type):
                     
                     pred = search.best_estimator_.predict(test_norm[features].values)
                     
-                    # All rows valid because of strict cleaning
                     ensemble_preds += pred
                     valid_counts += 1
                     
@@ -575,8 +563,6 @@ def evaluate_single_ensemble_model(df, model_type):
                 final_truth = y_test_sex.values[final_mask]
                 mae = mean_absolute_error(final_truth, final_preds)
                 sex_scores[sex].append(mae)
-                print(f"({sex} MAE={mae:.3f})", end=" ", flush=True)
-        print("", flush=True)
 
     aggregated_results = []
     for sex in ['M', 'F']:
@@ -603,7 +589,6 @@ def run_experiment_wrapper(exp_name, model_type, df):
     """Wrapper to be called by joblib"""
     try:
         results = nested_cv_evaluation(df, model_type, exp_name)
-        # Process results to flatten them before returning
         processed_results = []
         for res in results:
             scores = res.pop('scores', [])
@@ -638,7 +623,6 @@ def main():
     # 1. Detect Cores
     n_jobs_available = int(os.environ.get('SLURM_CPUS_PER_TASK', -1))
     if n_jobs_available == -1:
-        # If not in SLURM or env var not set, default to standard cpu count - 1
         n_jobs_available = max(1, os.cpu_count() - 1)
         
     print(f"Parallelizing with n_jobs={n_jobs_available}")
@@ -679,8 +663,8 @@ def main():
     # 5. Report
     results_df = pd.DataFrame(all_results)
     
-    # Order columns nicely
     if len(results_df) > 0:
+        # Save CSV
         cols = results_df.columns.tolist()
         meta = ['pipeline', 'model', 'sex', 'mean_mae', 'std_mae', 'successful_folds', 'n_train_samples_per_fold']
         fold_cols = sorted([c for c in cols if 'mae_fold' in c])
@@ -690,6 +674,32 @@ def main():
 
         results_df.to_csv('brain_age_results_cortical_experiments.csv', index=False)
         print(f"\nSaved results to brain_age_results_cortical_experiments.csv")
+
+        # --- FINAL PRINTED REPORT (Matched to previous output style) ---
+        print("\n" + "=" * 80)
+        print("FINAL RESULTS SUMMARY (Split by Sex)")
+        print("=" * 80)
+        
+        # Helper to categorize pipelines for display
+        report_pipelines = list(EXPERIMENTS.keys()) + ['ensemble_4_components']
+        
+        for sex in ['M', 'F']:
+            print(f"\n--- RESULTS FOR {sex.upper()} (N_total={len(df[df['sex']==sex])}) ---")
+            
+            sex_df = results_df[results_df['sex'] == sex].copy()
+            if len(sex_df) == 0:
+                print("No successful models for this sex.")
+                continue
+
+            for pipeline in report_pipelines:
+                pipeline_results = sex_df[sex_df['pipeline'] == pipeline]
+                if len(pipeline_results) > 0:
+                    print(f"\n{pipeline.upper()}:\n")
+                    pipeline_results = pipeline_results.sort_values(by='mean_mae')
+                    for _, row in pipeline_results.iterrows():
+                        n_train_display = f" (N_train: {row['n_train_samples_per_fold']})" if row['pipeline'] != 'ensemble_4_components' else ""
+                        print(f"  {row['model']:25} MAE: {row['mean_mae']:.3f} ± {row['std_mae']:.3f} (folds: {row['successful_folds']}){n_train_display}")
+
     else:
         print("No results generated.")
     
