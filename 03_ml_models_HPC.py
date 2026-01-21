@@ -464,6 +464,7 @@ def nested_cv_evaluation(df, model_type, experiment_name):
     for sex in ['M', 'F']:
         scores = sex_results[sex]['scores']
         if scores:
+            # --- CRITICAL FIX: Adding missing metadata columns ---
             final_results.append({
                 'pipeline': experiment_name,
                 'model': model_type,
@@ -472,7 +473,12 @@ def nested_cv_evaluation(df, model_type, experiment_name):
                 'std_mae': np.std(scores),
                 'scores': scores,
                 'successful_folds': len(scores),
-                'n_train_samples_per_fold': sex_results[sex]['train_size']
+                'n_train_samples_per_fold': sex_results[sex]['train_size'],
+                # Added Columns:
+                'n_features': len(features) if model_type != 'baseline' else 0,
+                'n_samples': len(df[df['sex']==sex]),
+                'n_subjects': len(df[df['sex']==sex]['subject_id'].unique()),
+                'best_params': 'N/A' # Matching original script behavior
             })
             
     print(f"  [DONE] {model_type} on {experiment_name}", flush=True)
@@ -567,6 +573,7 @@ def evaluate_single_ensemble_model(df, model_type):
     aggregated_results = []
     for sex in ['M', 'F']:
         if sex_scores[sex]:
+            # --- CRITICAL FIX: Adding missing metadata columns ---
             aggregated_results.append({
                 'pipeline': 'ensemble_4_components',
                 'model': model_type,
@@ -575,7 +582,12 @@ def evaluate_single_ensemble_model(df, model_type):
                 'std_mae': np.std(sex_scores[sex]),
                 'scores': sex_scores[sex],
                 'successful_folds': len(sex_scores[sex]),
-                'n_train_samples_per_fold': 'Variable'
+                'n_train_samples_per_fold': 'Variable',
+                # Added Columns:
+                'n_features': 'multiple',
+                'n_samples': len(df[df['sex']==sex]),
+                'n_subjects': len(df[df['sex']==sex]['subject_id'].unique()),
+                'best_params': 'N/A'
             })
             
     print(f"  [DONE ENSEMBLE] {model_type}", flush=True)
@@ -666,7 +678,10 @@ def main():
     if len(results_df) > 0:
         # Save CSV
         cols = results_df.columns.tolist()
-        meta = ['pipeline', 'model', 'sex', 'mean_mae', 'std_mae', 'successful_folds', 'n_train_samples_per_fold']
+        
+        # --- CRITICAL FIX: Updated Order to include restored columns ---
+        meta = ['pipeline', 'model', 'sex', 'n_features', 'n_samples', 'n_subjects', 'mean_mae', 'std_mae', 'successful_folds', 'n_train_samples_per_fold', 'best_params']
+        
         fold_cols = sorted([c for c in cols if 'mae_fold' in c])
         other_cols = [c for c in cols if c not in meta and c not in fold_cols]
         final_order = [c for c in meta if c in cols] + fold_cols + other_cols
