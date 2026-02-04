@@ -59,10 +59,12 @@ Where the datasetX_nipoppy directory is a Nipoppy-formatted dataset (you only ne
     * Dynamic resource allocation using SLURM_CPUS_PER_TASK and joblib to parallelize experiments across available CPU cores.
 
 * **04_ml_plot.py** - Results Visualization: This script is meant to be run after 03_ml_models.py.
-    * What it does: Generates publication-ready visualizations of the model performance.
+    * What it does: Generates publication-ready visualizations of the model performance for the base morphological models.
     * Inputs: The results CSV from the modeling script.
     * Outputs: A side-by-side comparison plot (brain_age_side_by_side_sexes.png) showing Mean Absolute Error (MAE) across all models, pipelines, and sexes.
     * Automatically parses metadata to display sample sizes ($n$) and scan counts ($k$) in plot headers.
+
+* **04_ml_plot_corticalAugmented.py** - Same as above, but for the cortical-augmented models.
 
 * **05_permutation_testing.py** – Statistical Significance Testing for ML models.
     * What it does: Analyzes the results from the ML pipeline to determine the best-performing learner and sex group. It then performs a paired permutation test (10,000 permutations) to assess if the difference in performance between the top two processing pipelines is statistically significant.
