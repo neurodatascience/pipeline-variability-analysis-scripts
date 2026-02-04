@@ -80,6 +80,8 @@ These scripts are for measuring disagreement, not for the ML models:
     * Outputs: Tidy-format CSVs (dice_overlap_tidy.csv) and structured grid heatmaps for every subcortical structure, broken down by dataset.
     * Uses SimpleITK for high-precision distance map calculations (eg: python3 dice_hd95.py --parallel --max_threads 4 --metrics dice)
 
+* **alternative_dice_vis.py** - An alternate, more compact visualization for the dice overlaps. Takes the dice_overlap_tidy.csv output of dice_hd95.py as input.
+
 * **disagreement.py** - Pipeline Disagreement Analysis:
     * What it does: Quantifies and visualizes spatial "disagreement" between different neuroimaging pipelines by calculating voxel-wise XOR (Exclusive OR) maps of subcortical segmentations.
     * Inputs: MNI-space segmentation files from multiple pipelines and a standard MNI152 template.
