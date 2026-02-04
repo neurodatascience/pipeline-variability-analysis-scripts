@@ -1,4 +1,4 @@
-### This repository contains several scripts for analyzing inter-pipeline discrepancies and leveraging this variability to predict brain age using scikit-learn models.
+### This repository contains several scripts for analyzing inter-pipeline discrepancies and leveraging this variability to predict brain age with classical ML models.
 * These scripts were too resource-intensive to run on NeuroCI. For demographic analyses and volumetric computations (e.g., volumetric correlations, volume distributions, SVD), please refer to the NeuroCI repository: https://github.com/neurodatascience/NeuroCI/ . In the NeuroCI repository, you can also reproducibly see how all datasets used in the analyses were processed to obtain segmentations.
 
 * The scripts are meant to run in a file directory that looks as follows:
