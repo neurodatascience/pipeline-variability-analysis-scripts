@@ -9,7 +9,7 @@ df = pd.read_csv('brain_age_results_sex_split_and_correct_ensembles.csv')
 # Clean up model names by removing 'ensemble_' prefix
 df['model_clean'] = df['model'].str.replace('ensemble_', '')
 
-# Create simplified pipeline names with updated labels
+# Create simplified pipeline names
 def simplify_pipeline(name):
     if 'freesurfer8001ants243' in name:
         return 'FS8001'
@@ -20,7 +20,7 @@ def simplify_pipeline(name):
     elif 'fslanat6071ants243' in name:
         return 'FSL6071'
     elif 'all_pipelines' in name:
-        return 'Pipeline Data Aggregation'
+        return 'Data Aggregation'
     elif 'ensemble' in name:
         return 'Ensemble'
     else:
@@ -28,132 +28,71 @@ def simplify_pipeline(name):
 
 df['pipeline_simple'] = df['pipeline'].apply(simplify_pipeline)
 
-# Set up the plotting style
+# Set up global plotting style and colors
 sns.set_style("whitegrid")
-
-# Create side-by-side plots for Male and Female
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 8))
-
-# --- MODIFIED: Get both n_subjects and n_samples for titles ---
-male_n_sub = df[df['sex'] == 'M']['n_subjects'].iloc[0]
-male_n_samp = df[df['sex'] == 'M']['n_samples'].iloc[0]
-
-female_n_sub = df[df['sex'] == 'F']['n_subjects'].iloc[0]
-female_n_samp = df[df['sex'] == 'F']['n_samples'].iloc[0]
-# -------------------------------------------------------------
-
-# Define better colors for pipelines (darker colors for better text contrast)
 pipelines = df['pipeline_simple'].unique()
-colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b']  # Better color palette
+colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b']
 color_dict = dict(zip(pipelines, colors))
 
-# Male subjects - manual plotting
-male_data = df[df['sex'] == 'M']
-models = male_data['model_clean'].unique()
-
-bar_width = 0.8  # Thick bars
-for model_idx, model in enumerate(models):
-    model_data = male_data[male_data['model_clean'] == model]
+def plot_sex_results(ax, data, sex_full_name):
+    """Function to ensure identical plotting logic for every subplot."""
+    models = data['model_clean'].unique()
+    bar_width = 0.8
     
-    # Special handling for baseline - use only one bar
-    if model == 'baseline':
-        row = model_data.iloc[0]  # Take the first baseline row (all are identical)
-        x_pos = model_idx
-        
-        # Plot bar
-        bar = ax1.bar(x_pos, row['mean_mae'], width=bar_width, 
-                     color='#7f7f7f', alpha=0.8)  # Gray for baseline
-        
-        # Error bars - properly positioned
-        ax1.errorbar(x_pos, row['mean_mae'], yerr=row['std_mae'],
-                    color='black', capsize=4, capthick=1, linewidth=1.5)
-        
-        # Pipeline label on bars - VERTICAL TEXT with better contrast
-        ax1.text(x_pos, row['mean_mae']/2, 'Baseline',
-                ha='center', va='center', fontsize=9, fontweight='bold', color='white',
-                rotation=90)
+    # Get metadata for title
+    n_sub = data['n_subjects'].iloc[0]
+    n_samp = data['n_samples'].iloc[0]
     
-    else:
-        n_bars = len(model_data)
-        for pipeline_idx, (_, row) in enumerate(model_data.iterrows()):
-            x_pos = model_idx + (pipeline_idx - n_bars/2 + 0.5) * (bar_width/n_bars)
-            
-            # Plot bar
-            bar = ax1.bar(x_pos, row['mean_mae'], width=bar_width/n_bars, 
-                         color=color_dict[row['pipeline_simple']], alpha=0.8)
-            
-            # Error bars - properly positioned
-            ax1.errorbar(x_pos, row['mean_mae'], yerr=row['std_mae'],
-                        color='black', capsize=4, capthick=1, linewidth=1.5)
-            
-            # Pipeline label on bars - VERTICAL TEXT with better contrast
-            ax1.text(x_pos, row['mean_mae']/2, row['pipeline_simple'],
-                    ha='center', va='center', fontsize=9, fontweight='bold', color='white',
-                    rotation=90)
-
-# --- MODIFIED: Update Title to show Subjects AND Scans ---
-ax1.set_title(f'Male Subjects - Brain Age Prediction MAE (n={int(male_n_sub)} subjects, k={int(male_n_samp)} scans)', 
-              fontsize=14, fontweight='bold')
-ax1.set_xlabel('Model Type', fontsize=12)
-ax1.set_ylabel('Mean MAE (years) ± STD', fontsize=12)
-ax1.set_xticks(range(len(models)))
-ax1.set_xticklabels(models, rotation=0)  # HORIZONTAL LABELS
-ax1.set_xlim(-0.5, len(models) - 0.5)
-
-# Female subjects - manual plotting
-female_data = df[df['sex'] == 'F']
-for model_idx, model in enumerate(models):
-    model_data = female_data[female_data['model_clean'] == model]
-    
-    # Special handling for baseline - use only one bar
-    if model == 'baseline':
-        row = model_data.iloc[0]  # Take the first baseline row (all are identical)
-        x_pos = model_idx
+    for model_idx, model in enumerate(models):
+        model_data = data[data['model_clean'] == model]
         
-        # Plot bar
-        bar = ax2.bar(x_pos, row['mean_mae'], width=bar_width,
-                     color='#7f7f7f', alpha=0.8)  # Gray for baseline
-        
-        # Error bars - properly positioned
-        ax2.errorbar(x_pos, row['mean_mae'], yerr=row['std_mae'],
-                    color='black', capsize=4, capthick=1, linewidth=1.5)
-        
-        # Pipeline label on bars - VERTICAL TEXT with better contrast
-        ax2.text(x_pos, row['mean_mae']/2, 'Baseline',
-                ha='center', va='center', fontsize=9, fontweight='bold', color='white',
-                rotation=90)
-    
-    else:
-        n_bars = len(model_data)
-        for pipeline_idx, (_, row) in enumerate(model_data.iterrows()):
-            x_pos = model_idx + (pipeline_idx - n_bars/2 + 0.5) * (bar_width/n_bars)
-            
-            # Plot bar
-            bar = ax2.bar(x_pos, row['mean_mae'], width=bar_width/n_bars,
-                         color=color_dict[row['pipeline_simple']], alpha=0.8)
-            
-            # Error bars - properly positioned
-            ax2.errorbar(x_pos, row['mean_mae'], yerr=row['std_mae'],
-                        color='black', capsize=4, capthick=1, linewidth=1.5)
-            
-            # Pipeline label on bars - VERTICAL TEXT with better contrast
-            ax2.text(x_pos, row['mean_mae']/2, row['pipeline_simple'],
-                    ha='center', va='center', fontsize=9, fontweight='bold', color='white',
-                    rotation=90)
+        # Special handling for baseline
+        if model == 'baseline':
+            row = model_data.iloc[0]
+            x_pos = model_idx
+            ax.bar(x_pos, row['mean_mae'], width=bar_width, color='#7f7f7f', alpha=0.8)
+            ax.errorbar(x_pos, row['mean_mae'], yerr=row['std_mae'], color='black', 
+                         capsize=4, capthick=1, linewidth=1.5)
+            ax.text(x_pos, row['mean_mae']/2, 'Baseline', ha='center', va='center', 
+                    fontsize=9, fontweight='bold', color='white', rotation=90)
+        else:
+            n_bars = len(model_data)
+            for pipeline_idx, (_, row) in enumerate(model_data.iterrows()):
+                x_pos = model_idx + (pipeline_idx - n_bars/2 + 0.5) * (bar_width/n_bars)
+                ax.bar(x_pos, row['mean_mae'], width=bar_width/n_bars, 
+                        color=color_dict[row['pipeline_simple']], alpha=0.8)
+                ax.errorbar(x_pos, row['mean_mae'], yerr=row['std_mae'], color='black', 
+                             capsize=4, capthick=1, linewidth=1.5)
+                ax.text(x_pos, row['mean_mae']/2, row['pipeline_simple'], ha='center', 
+                        va='center', fontsize=9, fontweight='bold', color='white', rotation=90)
 
-# --- MODIFIED: Update Title to show Subjects AND Scans ---
-ax2.set_title(f'Female Subjects - Brain Age Prediction MAE (n={int(female_n_sub)} subjects, k={int(female_n_samp)} scans)', 
-              fontsize=14, fontweight='bold')
-ax2.set_xlabel('Model Type', fontsize=12)
-ax2.set_ylabel('Mean MAE (years) ± STD', fontsize=12)
-ax2.set_xticks(range(len(models)))
-ax2.set_xticklabels(models, rotation=0)  # HORIZONTAL LABELS
-ax2.set_xlim(-0.5, len(models) - 0.5)
+    ax.set_title(f'{sex_full_name} Subjects - Brain Age Prediction MAE (n={int(n_sub)} subjects, k={int(n_samp)} scans)', 
+                  fontsize=14, fontweight='bold')
+    ax.set_xlabel('Model Type', fontsize=12)
+    ax.set_ylabel('Mean MAE (years) ± STD', fontsize=12)
+    ax.set_xticks(range(len(models)))
+    ax.set_xticklabels(models, rotation=0)
+    ax.set_xlim(-0.5, len(models) - 0.5)
 
+# Separate data
+male_df = df[df['sex'] == 'M']
+female_df = df[df['sex'] == 'F']
+
+# --- VERSION 1: Side-by-Side ---
+fig1, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 8))
+plot_sex_results(ax1, male_df, 'Male')
+plot_sex_results(ax2, female_df, 'Female')
 plt.tight_layout()
-
-# Save as PNG
 plt.savefig('brain_age_side_by_side_sexes.png', dpi=300, bbox_inches='tight')
 plt.close()
 
-print("PNG image saved: brain_age_side_by_side_sexes.png")
+# --- VERSION 2: Vertically Stacked ---
+# Adjusted figsize for vertical aspect ratio
+fig2, (ax_top, ax_bottom) = plt.subplots(2, 1, figsize=(12, 16))
+plot_sex_results(ax_top, male_df, 'Male')
+plot_sex_results(ax_bottom, female_df, 'Female')
+plt.tight_layout()
+plt.savefig('brain_age_stacked_sexes.png', dpi=300, bbox_inches='tight')
+plt.close()
+
+print("Images saved: 'brain_age_side_by_side_sexes.png' and 'brain_age_stacked_sexes.png'")
