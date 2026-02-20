@@ -1,0 +1,64 @@
+{
+    "n_sessions": 5036,
+    "anatomical_hierarchy": {
+        "Right-Accumbens-area": 525.75,
+        "Left-Accumbens-area": 537.54829925,
+        "Left-Amygdala": 1584.08301925,
+        "Right-Amygdala": 1647.0369282499998,
+        "Right-Pallidum": 1702.753989,
+        "Left-Pallidum": 1730.6292415,
+        "Left-Caudate": 3402.69656275,
+        "Right-Caudate": 3488.08016975,
+        "Left-Hippocampus": 3942.2066219999997,
+        "Right-Hippocampus": 4047.49692125,
+        "Right-Putamen": 4840.02264725,
+        "Left-Putamen": 4892.78476475,
+        "Right-Thalamus": 6929.90735425,
+        "Left-Thalamus": 7043.24618975,
+        "Brainstem": 20433.94144925
+    },
+    "hypothesis_1_detailed": [
+        {
+            "pair": "freesurfer741ants243 vs freesurfer8001ants243",
+            "rho": 0.8679,
+            "p": 2.7518063955129248e-05
+        },
+        {
+            "pair": "freesurfer741ants243 vs fslanat6071ants243",
+            "rho": 0.9286,
+            "p": 5.867938270803352e-07
+        },
+        {
+            "pair": "freesurfer741ants243 vs samseg8001ants243",
+            "rho": 0.7607,
+            "p": 0.0009911286119823719
+        },
+        {
+            "pair": "freesurfer8001ants243 vs fslanat6071ants243",
+            "rho": 0.8821,
+            "p": 1.3558210624788689e-05
+        },
+        {
+            "pair": "freesurfer8001ants243 vs samseg8001ants243",
+            "rho": 0.9393,
+            "p": 2.094580193668552e-07
+        },
+        {
+            "pair": "fslanat6071ants243 vs samseg8001ants243",
+            "rho": 0.475,
+            "p": 0.07357086204591354
+        }
+    ],
+    "hypothesis_1_summary": {
+        "mean_rho": 0.8089,
+        "adj_p": 0.4414251722754812,
+        "conclusion": "Not Significant after correction, but shows a strong descriptive trend (Rho > 0.7)."
+    },
+    "hypothesis_2": {
+        "fsl_median": 0.8423,
+        "other_median": 0.8572,
+        "p_val": 0.0,
+        "r_val": 0.1466,
+        "conclusion": "Significant but small effect. FSL agreement is lower, but only by a small margin."
+    }
+}
