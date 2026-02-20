@@ -82,6 +82,11 @@ These scripts are for measuring disagreement, not for the ML models:
 
 * **alternative_dice_vis.py** - An alternate, more compact visualization for the dice overlaps. Takes the dice_overlap_tidy.csv output of dice_hd95.py as input.
 
+  * **dice_tests.py** - Stats tests for dice scores.:
+    * What it does: Statistically tests if structure volume predicts pipeline agreement and if FSL-based pairings show systematic bias.
+    * Inputs: dice_overlap_tidy.csv from dice_hd95.py and df_tidy.csv from NeuroCI (https://github.com/neurodatascience/NeuroCI/blob/master/experiment_state/figures/df_tidy.csv)
+    * Outputs: A JSON results file and console summary of Spearman correlations, Mann-Whitney U tests, and Bonferroni adjustments (subcortical_analysis_results.json).
+
 * **disagreement.py** - Pipeline Disagreement Analysis:
     * What it does: Quantifies and visualizes spatial "disagreement" between different neuroimaging pipelines by calculating voxel-wise XOR (Exclusive OR) maps of subcortical segmentations.
     * Inputs: MNI-space segmentation files from multiple pipelines and a standard MNI152 template.
