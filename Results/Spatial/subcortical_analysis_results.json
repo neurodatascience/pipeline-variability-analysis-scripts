@@ -17,48 +17,60 @@
         "Left-Thalamus": 7043.24618975,
         "Brainstem": 20433.94144925
     },
-    "hypothesis_1_detailed": [
-        {
-            "pair": "freesurfer741ants243 vs freesurfer8001ants243",
-            "rho": 0.8679,
-            "p": 2.7518063955129248e-05
-        },
-        {
-            "pair": "freesurfer741ants243 vs fslanat6071ants243",
-            "rho": 0.9286,
-            "p": 5.867938270803352e-07
-        },
-        {
-            "pair": "freesurfer741ants243 vs samseg8001ants243",
-            "rho": 0.7607,
-            "p": 0.0009911286119823719
-        },
-        {
-            "pair": "freesurfer8001ants243 vs fslanat6071ants243",
-            "rho": 0.8821,
-            "p": 1.3558210624788689e-05
-        },
-        {
-            "pair": "freesurfer8001ants243 vs samseg8001ants243",
-            "rho": 0.9393,
-            "p": 2.094580193668552e-07
-        },
-        {
-            "pair": "fslanat6071ants243 vs samseg8001ants243",
-            "rho": 0.475,
-            "p": 0.07357086204591354
-        }
-    ],
-    "hypothesis_1_summary": {
-        "mean_rho": 0.8089,
-        "adj_p": 0.4414251722754812,
-        "conclusion": "Not Significant after correction, but shows a strong descriptive trend (Rho > 0.7)."
+    "hypothesis_1": {
+        "mean_rho": 0.8089285714285713,
+        "n_tests": 6,
+        "correction": "bonferroni_per_comparison",
+        "pairwise_results": [
+            {
+                "pair": "freesurfer741ants243 vs freesurfer8001ants243",
+                "rho": 0.8678571428571429,
+                "p": 2.7518063955129248e-05,
+                "p_adj": 0.00016510838373077547,
+                "significant": true
+            },
+            {
+                "pair": "freesurfer741ants243 vs fslanat6071ants243",
+                "rho": 0.9285714285714284,
+                "p": 5.867938270803352e-07,
+                "p_adj": 3.5207629624820112e-06,
+                "significant": true
+            },
+            {
+                "pair": "freesurfer741ants243 vs samseg8001ants243",
+                "rho": 0.7607142857142856,
+                "p": 0.0009911286119823719,
+                "p_adj": 0.005946771671894231,
+                "significant": true
+            },
+            {
+                "pair": "freesurfer8001ants243 vs fslanat6071ants243",
+                "rho": 0.8821428571428571,
+                "p": 1.3558210624788689e-05,
+                "p_adj": 8.134926374873213e-05,
+                "significant": true
+            },
+            {
+                "pair": "freesurfer8001ants243 vs samseg8001ants243",
+                "rho": 0.9392857142857142,
+                "p": 2.094580193668552e-07,
+                "p_adj": 1.2567481162011312e-06,
+                "significant": true
+            },
+            {
+                "pair": "fslanat6071ants243 vs samseg8001ants243",
+                "rho": 0.475,
+                "p": 0.07357086204591354,
+                "p_adj": 0.4414251722754812,
+                "significant": false
+            }
+        ]
     },
     "hypothesis_2": {
-        "fsl_median": 0.8423,
-        "other_median": 0.8572,
+        "fsl_median": 0.8423283970719438,
+        "other_median": 0.8572400520967451,
         "p_val": 0.0,
-        "r_val": 0.1466,
-        "conclusion": "Significant but small effect. FSL agreement is lower, but only by a small margin."
+        "r_val": 0.14662528342382808,
+        "conclusion": "Significant difference detected."
     }
 }
