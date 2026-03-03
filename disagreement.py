@@ -74,20 +74,26 @@ def find_files_for_pipeline(root, pipeline, target_name):
     return files
 
 def process_subject_all_pipelines(uid, pipeline_paths, ref_img, pipeline_names):
-    loaded_masks = {}
+    loaded_data = {}
     try:
         for pl_name in pipeline_names:
             fpath = pipeline_paths.get(pl_name)
             if not fpath: return None 
             data = load_and_resample(fpath, ref_img)
             if np.sum(data) == 0: return None
-            unique_vals = np.unique(data)
-            if not set(FSL_LABELS).issubset(set(unique_vals)): return None
-            loaded_masks[pl_name] = np.isin(data, FSL_LABELS)
+            
+            # Mask data: keep actual label integers for FSL_LABELS, everything else is 0
+            interest_mask = np.isin(data, FSL_LABELS)
+            if np.sum(interest_mask) == 0: return None
+            loaded_data[pl_name] = np.where(interest_mask, data, 0)
+
         results = {}
         for (p1, p2) in PAIRS_TO_COMPUTE:
-            xor_map = np.logical_xor(loaded_masks[p1], loaded_masks[p2]).astype(np.float32)
-            results[f"{p1}_vs_{p2}"] = xor_map
+            # Inequality check captures:
+            # 1. Boundary disagreement (Label vs 0)
+            # 2. Internal disagreement (Label 10 vs Label 12)
+            diff_map = (loaded_data[p1] != loaded_data[p2]).astype(np.float32)
+            results[f"{p1}_vs_{p2}"] = diff_map
         return results
     except Exception: return None
 
