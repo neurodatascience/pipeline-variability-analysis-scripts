@@ -1,0 +1,1877 @@
+{
+  "ks_tests": [
+    {
+      "structure": "Left-Thalamus",
+      "avg_overlap": 0.6005256433552458,
+      "avg_p": 3.585518319285039e-24,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.10164457350696307,
+          "p_raw": 2.1513109915710233e-23,
+          "overlap": 0.8983554264930369
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.33485769419638656,
+          "p_raw": 5.912246846065583e-254,
+          "overlap": 0.6651423058036134
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.425046559479449,
+          "p_raw": 0.0,
+          "overlap": 0.574953440520551
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.4312305530369897,
+          "p_raw": 0.0,
+          "overlap": 0.5687694469630102
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.3521006160076265,
+          "p_raw": 9.07850626369573e-282,
+          "overlap": 0.6478993839923735
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.7519661436411099,
+          "p_raw": 0.0,
+          "overlap": 0.24803385635889008
+        }
+      ]
+    },
+    {
+      "structure": "Left-Caudate",
+      "avg_overlap": 0.8755078210258246,
+      "avg_p": 0.0025197252962753133,
+      "min_p_bonf": 1.9859925477607394e-104,
+      "agreement": "HIGH",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.21537302671932335,
+          "p_raw": 4.4954618733730016e-104,
+          "overlap": 0.7846269732806767
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.031075299656334432,
+          "p_raw": 0.014039230730304515,
+          "overlap": 0.9689247003436656
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.05056984837091394,
+          "p_raw": 3.893330612207207e-06,
+          "overlap": 0.9494301516290861
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.19415645973225473,
+          "p_raw": 2.0412613216870418e-84,
+          "overlap": 0.8058435402677453
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.21750913357893634,
+          "p_raw": 2.2066583864008217e-106,
+          "overlap": 0.7824908664210637
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.0382693057872901,
+          "p_raw": 0.0010752277167351573,
+          "overlap": 0.96173069421271
+        }
+      ]
+    },
+    {
+      "structure": "Left-Putamen",
+      "avg_overlap": 0.7782485156148932,
+      "avg_p": 1.1016963684302533e-14,
+      "min_p_bonf": 6.485290330379719e-281,
+      "agreement": "HIGH",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.35312127691955303,
+          "p_raw": 7.205878144866353e-283,
+          "overlap": 0.6468787230804469
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.07785770149126515,
+          "p_raw": 6.61017821058152e-14,
+          "overlap": 0.9221422985087349
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.2731802908118051,
+          "p_raw": 1.269041885450357e-168,
+          "overlap": 0.7268197091881949
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.28934040956581364,
+          "p_raw": 1.9986852235185636e-188,
+          "overlap": 0.7106595904341864
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.13177395624331475,
+          "p_raw": 3.8639586100793176e-39,
+          "overlap": 0.8682260437566852
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.20523527127888871,
+          "p_raw": 9.924583032961321e-95,
+          "overlap": 0.7947647287211113
+        }
+      ]
+    },
+    {
+      "structure": "Left-Pallidum",
+      "avg_overlap": 0.662813106705559,
+      "avg_p": 2.951962090271683e-11,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.5293228470890987,
+          "p_raw": 0.0,
+          "overlap": 0.4706771529109013
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.4122595041709428,
+          "p_raw": 0.0,
+          "overlap": 0.5877404958290572
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.5725741405371767,
+          "p_raw": 0.0,
+          "overlap": 0.4274258594628233
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.19117394348538588,
+          "p_raw": 7.13056901333208e-82,
+          "overlap": 0.8088260565146141
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.06717520001420473,
+          "p_raw": 1.7711772541630098e-10,
+          "overlap": 0.9328247999857953
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.250615724469837,
+          "p_raw": 1.596104087292488e-141,
+          "overlap": 0.749384275530163
+        }
+      ]
+    },
+    {
+      "structure": "Brainstem",
+      "avg_overlap": 0.7835781718862812,
+      "avg_p": 5.106579511209669e-06,
+      "min_p_bonf": 0.0,
+      "agreement": "HIGH",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.046518002222895205,
+          "p_raw": 3.0639477067258015e-05,
+          "overlap": 0.9534819977771047
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.20704819649484923,
+          "p_raw": 3.228339442861719e-96,
+          "overlap": 0.7929518035051508
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.21557633848017047,
+          "p_raw": 1.117374450196704e-104,
+          "overlap": 0.7844236615198296
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.16900319196434418,
+          "p_raw": 5.413777130588868e-64,
+          "overlap": 0.8309968080356558
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.25587138965712114,
+          "p_raw": 1.6991525529903153e-147,
+          "overlap": 0.7441286103428788
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.40451384986293193,
+          "p_raw": 0.0,
+          "overlap": 0.5954861501370681
+        }
+      ]
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "avg_overlap": 0.7755491379094797,
+      "avg_p": 3.3813465519176724e-12,
+      "min_p_bonf": 0.0,
+      "agreement": "HIGH",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.13242014256659845,
+          "p_raw": 1.9434920493790767e-39,
+          "overlap": 0.8675798574334015
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.2929667004150786,
+          "p_raw": 1.4710863620773502e-193,
+          "overlap": 0.7070332995849213
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.07018782421947094,
+          "p_raw": 2.028807931146429e-11,
+          "overlap": 0.9298121757805291
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.3920730830528748,
+          "p_raw": 0.0,
+          "overlap": 0.6079269169471252
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.1008993368473708,
+          "p_raw": 4.174546559383419e-23,
+          "overlap": 0.8991006631526292
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.358158085441729,
+          "p_raw": 6.673974830526513e-292,
+          "overlap": 0.641841914558271
+        }
+      ]
+    },
+    {
+      "structure": "Left-Amygdala",
+      "avg_overlap": 0.6717920775909775,
+      "avg_p": 1.1496276067585375e-59,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.3270373849159804,
+          "p_raw": 6.44943181487097e-242,
+          "overlap": 0.6729626150840196
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.25701070465839426,
+          "p_raw": 1.3455701229433411e-148,
+          "overlap": 0.7429892953416057
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.16169012817012476,
+          "p_raw": 6.897765640551225e-59,
+          "overlap": 0.8383098718298753
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.5754233155649219,
+          "p_raw": 0.0,
+          "overlap": 0.4245766844350781
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.24183916941526115,
+          "p_raw": 1.1814546246145422e-131,
+          "overlap": 0.7581608305847388
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.40624683172945253,
+          "p_raw": 0.0,
+          "overlap": 0.5937531682705475
+        }
+      ]
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "avg_overlap": 0.5655766361841482,
+      "avg_p": 6.307976220656428e-06,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.6628047065117302,
+          "p_raw": 0.0,
+          "overlap": 0.3371952934882698
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.2958311688660726,
+          "p_raw": 1.7920501809201954e-197,
+          "overlap": 0.7041688311339274
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.69136967997889,
+          "p_raw": 0.0,
+          "overlap": 0.30863032002111
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.43616017369858984,
+          "p_raw": 0.0,
+          "overlap": 0.5638398263014102
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.04602377822500901,
+          "p_raw": 3.7847857323938565e-05,
+          "overlap": 0.953976221774991
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.4743506756148184,
+          "p_raw": 0.0,
+          "overlap": 0.5256493243851816
+        }
+      ]
+    },
+    {
+      "structure": "Right-Thalamus",
+      "avg_overlap": 0.5923463926094764,
+      "avg_p": 1.3531017470263626e-88,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.1978753364703929,
+          "p_raw": 8.118610482158175e-88,
+          "overlap": 0.8021246635296071
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.2642888050105833,
+          "p_raw": 3.248348479796102e-157,
+          "overlap": 0.7357111949894166
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.4809206040758801,
+          "p_raw": 0.0,
+          "overlap": 0.5190793959241199
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.4589297171402675,
+          "p_raw": 0.0,
+          "overlap": 0.5410702828597325
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.3121766051801949,
+          "p_raw": 1.5022671485579614e-220,
+          "overlap": 0.6878233948198051
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.7317305764658226,
+          "p_raw": 0.0,
+          "overlap": 0.2682694235341774
+        }
+      ]
+    },
+    {
+      "structure": "Right-Caudate",
+      "avg_overlap": 0.881581879525263,
+      "avg_p": 0.0005951286036828535,
+      "min_p_bonf": 5.710940740818864e-103,
+      "agreement": "HIGH",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.2162457359919939,
+          "p_raw": 6.3454897120209605e-105,
+          "overlap": 0.7837542640080061
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.04727687941988054,
+          "p_raw": 2.116827529740177e-05,
+          "overlap": 0.9527231205801194
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.036290006451977004,
+          "p_raw": 0.0022719728483986366,
+          "overlap": 0.963709993548023
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.17803446600213516,
+          "p_raw": 5.3234672219546586e-71,
+          "overlap": 0.8219655339978649
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.19483422408815748,
+          "p_raw": 2.5769217447624306e-85,
+          "overlap": 0.8051657759118425
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.037827410894278435,
+          "p_raw": 0.001277630498401082,
+          "overlap": 0.9621725891057216
+        }
+      ]
+    },
+    {
+      "structure": "Right-Putamen",
+      "avg_overlap": 0.8451647230634719,
+      "avg_p": 2.600630872465307e-09,
+      "min_p_bonf": 1.5986475362235035e-139,
+      "agreement": "HIGH",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.22259443845762433,
+          "p_raw": 3.35780732606431e-111,
+          "overlap": 0.7774055615423756
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.06037087930546613,
+          "p_raw": 1.560378523479184e-08,
+          "overlap": 0.9396291206945339
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.1254140018578033,
+          "p_raw": 1.5081437392726426e-35,
+          "overlap": 0.8745859981421967
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.2510201925535422,
+          "p_raw": 1.7762750402483372e-141,
+          "overlap": 0.7489798074464578
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.1367015274368609,
+          "p_raw": 4.270150792843377e-42,
+          "overlap": 0.8632984725631391
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.1329106220078719,
+          "p_raw": 7.856672702472783e-40,
+          "overlap": 0.867089377992128
+        }
+      ]
+    },
+    {
+      "structure": "Right-Pallidum",
+      "avg_overlap": 0.6976227638366312,
+      "avg_p": 0.0017257400583546906,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.46359978355211273,
+          "p_raw": 0.0,
+          "overlap": 0.5364002164478873
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.271353818120248,
+          "p_raw": 8.201673826642262e-166,
+          "overlap": 0.728646181879752
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.4908601568303252,
+          "p_raw": 0.0,
+          "overlap": 0.5091398431696748
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.26832397289904986,
+          "p_raw": 8.471306647901001e-162,
+          "overlap": 0.7316760271009501
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.03199293559686492,
+          "p_raw": 0.010354440350128143,
+          "overlap": 0.9680070644031351
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.2881327499816116,
+          "p_raw": 1.42976060493784e-187,
+          "overlap": 0.7118672500183885
+        }
+      ]
+    },
+    {
+      "structure": "Right-Hippocampus",
+      "avg_overlap": 0.7768312233273503,
+      "avg_p": 9.672847336141105e-06,
+      "min_p_bonf": 0.0,
+      "agreement": "HIGH",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.07053264934981084,
+          "p_raw": 1.7463477367059937e-11,
+          "overlap": 0.9294673506501892
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.3510395393936881,
+          "p_raw": 1.3933782683058465e-279,
+          "overlap": 0.648960460606312
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.04506782202305323,
+          "p_raw": 5.803706655336926e-05,
+          "overlap": 0.9549321779769467
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.41744123162262475,
+          "p_raw": 0.0,
+          "overlap": 0.5825587683773752
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.10077382093103421,
+          "p_raw": 4.7540044013716934e-23,
+          "overlap": 0.8992261790689657
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.3541575967156876,
+          "p_raw": 2.8052330773620214e-285,
+          "overlap": 0.6458424032843124
+        }
+      ]
+    },
+    {
+      "structure": "Right-Amygdala",
+      "avg_overlap": 0.6469051331780107,
+      "avg_p": 9.02955172344473e-24,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.2254662161435074,
+          "p_raw": 4.2144848656452136e-114,
+          "overlap": 0.7745337838564926
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.44648715122321675,
+          "p_raw": 0.0,
+          "overlap": 0.5535128487767833
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.10055787484384843,
+          "p_raw": 5.417731034066838e-23,
+          "overlap": 0.8994421251561515
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.6323861856110853,
+          "p_raw": 0.0,
+          "overlap": 0.3676138143889147
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.17285118281913647,
+          "p_raw": 3.717765581117296e-67,
+          "overlap": 0.8271488171808635
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.5408205902911422,
+          "p_raw": 0.0,
+          "overlap": 0.45917940970885784
+        }
+      ]
+    },
+    {
+      "structure": "Right-Accumbens-area",
+      "avg_overlap": 0.55849861391867,
+      "avg_p": 1.4805288248142942e-149,
+      "min_p_bonf": 0.0,
+      "agreement": "MODERATE",
+      "details": [
+        {
+          "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+          "D": 0.42747158737161856,
+          "p_raw": 0.0,
+          "overlap": 0.5725284126283814
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+          "D": 0.36650245511058077,
+          "p_raw": 2.7430238498677146e-305,
+          "overlap": 0.6334975448894192
+        },
+        {
+          "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+          "D": 0.2701528188123176,
+          "p_raw": 7.131315989857563e-165,
+          "overlap": 0.7298471811876823
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+          "D": 0.7095329399901148,
+          "p_raw": 0.0,
+          "overlap": 0.2904670600098852
+        },
+        {
+          "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+          "D": 0.2569716438115449,
+          "p_raw": 8.883172948885765e-149,
+          "overlap": 0.7430283561884551
+        },
+        {
+          "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+          "D": 0.6183768713918034,
+          "p_raw": 0.0,
+          "overlap": 0.3816231286081966
+        }
+      ]
+    }
+  ],
+  "mwu_tests": [
+    {
+      "structure": "Left-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        7154.75,
+        6889.9
+      ],
+      "U": 14755489.0,
+      "p_raw": 8.456895743902951e-32,
+      "p_bonf": 7.611206169512657e-30,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        7154.75,
+        7961.451732
+      ],
+      "U": 7694075.5,
+      "p_raw": 1.1189123338655781e-280,
+      "p_bonf": 1.0070211004790204e-278,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        7154.75,
+        6165.5711995
+      ],
+      "U": 20585612.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Thalamus",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        6889.9,
+        7961.451732
+      ],
+      "U": 5759680.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Thalamus",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        6889.9,
+        6165.5711995
+      ],
+      "U": 19266118.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Thalamus",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        7961.451732,
+        6165.5711995
+      ],
+      "U": 24783566.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        3317.45,
+        3602.1000000000004
+      ],
+      "U": 9100361.5,
+      "p_raw": 2.813733834802058e-152,
+      "p_bonf": 2.532360451321852e-150,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        3317.45,
+        3344.0
+      ],
+      "U": 12715502.0,
+      "p_raw": 0.03894956485169229,
+      "p_bonf": 1.0,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        3317.45,
+        3337.6199685
+      ],
+      "U": 12885937.0,
+      "p_raw": 0.13035748297428154,
+      "p_bonf": 1.0,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        3602.1000000000004,
+        3344.0
+      ],
+      "U": 16626377.0,
+      "p_raw": 1.946135936126795e-133,
+      "p_bonf": 1.7515223425141155e-131,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        3602.1000000000004,
+        3337.6199685
+      ],
+      "U": 17014877.0,
+      "p_raw": 2.5939632275728726e-154,
+      "p_bonf": 2.3345669048155854e-152,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        3344.0,
+        3337.6199685
+      ],
+      "U": 13194973.0,
+      "p_raw": 0.4369972516990279,
+      "p_bonf": 1.0,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        4586.450000000001,
+        5238.2
+      ],
+      "U": 6594053.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        4586.450000000001,
+        4712.0
+      ],
+      "U": 11733753.5,
+      "p_raw": 4.705406130840104e-18,
+      "p_bonf": 4.234865517756094e-16,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        4586.450000000001,
+        5033.380875999999
+      ],
+      "U": 8199833.0,
+      "p_raw": 1.9488047430834153e-236,
+      "p_bonf": 1.7539242687750738e-234,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        5238.2,
+        4712.0
+      ],
+      "U": 18459950.0,
+      "p_raw": 1.3454619584760378e-298,
+      "p_bonf": 1.210915762628434e-296,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        5238.2,
+        5033.380875999999
+      ],
+      "U": 15178888.0,
+      "p_raw": 1.6428245015449472e-45,
+      "p_bonf": 1.4785420513904525e-43,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        4712.0,
+        5033.380875999999
+      ],
+      "U": 9305440.0,
+      "p_raw": 6.96183351854678e-141,
+      "p_bonf": 6.265650166692102e-139,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        1970.65,
+        1630.85
+      ],
+      "U": 22057469.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        1970.65,
+        1724.0
+      ],
+      "U": 19936430.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        1970.65,
+        1601.9276169999998
+      ],
+      "U": 22801590.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        1630.85,
+        1724.0
+      ],
+      "U": 9515661.0,
+      "p_raw": 3.100118099901388e-120,
+      "p_bonf": 2.790106289911249e-118,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        1630.85,
+        1601.9276169999998
+      ],
+      "U": 14005824.0,
+      "p_raw": 3.0202368911097834e-10,
+      "p_bonf": 2.718213201998805e-08,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        1724.0,
+        1601.9276169999998
+      ],
+      "U": 17568447.0,
+      "p_raw": 1.4099087550211304e-198,
+      "p_bonf": 1.2689178795190173e-196,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        20329.4,
+        20559.5
+      ],
+      "U": 12233812.0,
+      "p_raw": 1.800674804592851e-07,
+      "p_bonf": 1.620607324133566e-05,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        20329.4,
+        21658.8974
+      ],
+      "U": 9328308.0,
+      "p_raw": 5.3804229413680626e-136,
+      "p_bonf": 4.842380647231256e-134,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        20329.4,
+        19176.954296
+      ],
+      "U": 16969170.0,
+      "p_raw": 1.5331032492573281e-146,
+      "p_bonf": 1.3797929243315953e-144,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        20559.5,
+        21658.8974
+      ],
+      "U": 10004566.0,
+      "p_raw": 3.538346219660441e-89,
+      "p_bonf": 3.184511597694397e-87,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        20559.5,
+        19176.954296
+      ],
+      "U": 17647549.0,
+      "p_raw": 5.2345811497271394e-207,
+      "p_bonf": 4.711123034754426e-205,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        21658.8974,
+        19176.954296
+      ],
+      "U": 20143417.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        3973.1,
+        4112.55
+      ],
+      "U": 10756689.0,
+      "p_raw": 7.608864845154703e-52,
+      "p_bonf": 6.847978360639233e-50,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        3973.1,
+        3648.757935
+      ],
+      "U": 18322741.5,
+      "p_raw": 1.1395372047251206e-277,
+      "p_bonf": 1.0255834842526086e-275,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        3973.1,
+        4028.672361
+      ],
+      "U": 12026691.0,
+      "p_raw": 3.99531700429689e-13,
+      "p_bonf": 3.595785303867201e-11,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        4112.55,
+        3648.757935
+      ],
+      "U": 19916433.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        4112.55,
+        4028.672361
+      ],
+      "U": 14377567.0,
+      "p_raw": 1.509391038508591e-18,
+      "p_bonf": 1.358451934657732e-16,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        3648.757935,
+        4028.672361
+      ],
+      "U": 6690467.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        1562.65,
+        1733.55
+      ],
+      "U": 7598448.0,
+      "p_raw": 7.902935331153807e-290,
+      "p_bonf": 7.112641798038425e-288,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        1562.65,
+        1422.0
+      ],
+      "U": 17717396.5,
+      "p_raw": 2.539939879444405e-218,
+      "p_bonf": 2.2859458914999647e-216,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        1562.65,
+        1620.5113944999998
+      ],
+      "U": 11132274.0,
+      "p_raw": 5.5967676870526765e-40,
+      "p_bonf": 5.037090918347409e-38,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        1733.55,
+        1422.0
+      ],
+      "U": 22457594.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        1733.55,
+        1620.5113944999998
+      ],
+      "U": 17420453.0,
+      "p_raw": 3.394515300575472e-187,
+      "p_bonf": 3.055063770517925e-185,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        1422.0,
+        1620.5113944999998
+      ],
+      "U": 5967291.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        416.45,
+        609.8499999999999
+      ],
+      "U": 2724000.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        416.45,
+        502.586365
+      ],
+      "U": 8114350.0,
+      "p_raw": 1.7848767413291843e-238,
+      "p_bonf": 1.6063890671962658e-236,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        416.45,
+        613.5306370000001
+      ],
+      "U": 2387019.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        609.8499999999999,
+        502.586365
+      ],
+      "U": 20056279.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        609.8499999999999,
+        613.5306370000001
+      ],
+      "U": 12564073.0,
+      "p_raw": 0.000767829927675281,
+      "p_bonf": 0.06910469349077529,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        502.586365,
+        613.5306370000001
+      ],
+      "U": 5429043.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        7186.3,
+        6675.8
+      ],
+      "U": 16674100.5,
+      "p_raw": 5.482923986434436e-134,
+      "p_bonf": 4.934631587790993e-132,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        7186.3,
+        7778.167725
+      ],
+      "U": 8821561.5,
+      "p_raw": 2.888621672724616e-175,
+      "p_bonf": 2.5997595054521544e-173,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        7186.3,
+        6072.561716
+      ],
+      "U": 21591335.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        6675.8,
+        7778.167725
+      ],
+      "U": 5133645.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        6675.8,
+        6072.561716
+      ],
+      "U": 18665274.0,
+      "p_raw": 3.884641132478933e-308,
+      "p_bonf": 3.49617701923104e-306,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        7778.167725,
+        6072.561716
+      ],
+      "U": 24629135.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        3397.8,
+        3673.75
+      ],
+      "U": 9183539.5,
+      "p_raw": 5.949758967534397e-146,
+      "p_bonf": 5.354783070780957e-144,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        3397.8,
+        3448.0
+      ],
+      "U": 12316009.5,
+      "p_raw": 2.048423633331342e-06,
+      "p_bonf": 0.0001843581269998208,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        3397.8,
+        3428.7920135
+      ],
+      "U": 12831160.0,
+      "p_raw": 0.06027016115956444,
+      "p_bonf": 1.0,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        3673.75,
+        3448.0
+      ],
+      "U": 16191966.0,
+      "p_raw": 5.305927039058505e-104,
+      "p_bonf": 4.775334335152654e-102,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        3673.75,
+        3428.7920135
+      ],
+      "U": 16784088.0,
+      "p_raw": 4.960673076167518e-137,
+      "p_bonf": 4.464605768550766e-135,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        3448.0,
+        3428.7920135
+      ],
+      "U": 13533377.0,
+      "p_raw": 0.002339067054924176,
+      "p_bonf": 0.21051603494317586,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        4695.0,
+        5112.1
+      ],
+      "U": 8901447.5,
+      "p_raw": 5.929593850341064e-168,
+      "p_bonf": 5.336634465306958e-166,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        4695.0,
+        4669.189453
+      ],
+      "U": 13475146.5,
+      "p_raw": 0.002375910935428768,
+      "p_bonf": 0.21383198418858912,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        4695.0,
+        4893.08364
+      ],
+      "U": 11048178.0,
+      "p_raw": 2.697570132567781e-43,
+      "p_bonf": 2.427813119311003e-41,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        5112.1,
+        4669.189453
+      ],
+      "U": 17735127.5,
+      "p_raw": 2.1263445835782832e-225,
+      "p_bonf": 1.9137101252204547e-223,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        5112.1,
+        4893.08364
+      ],
+      "U": 15327783.0,
+      "p_raw": 6.828370341188382e-52,
+      "p_bonf": 6.145533307069544e-50,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        4669.189453,
+        4893.08364
+      ],
+      "U": 10457085.0,
+      "p_raw": 5.242650850702124e-69,
+      "p_bonf": 4.718385765631912e-67,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        1883.35,
+        1598.9
+      ],
+      "U": 21222253.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        1883.35,
+        1734.733582
+      ],
+      "U": 17498050.5,
+      "p_raw": 1.3751214613787994e-198,
+      "p_bonf": 1.2376093152409194e-196,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        1883.35,
+        1592.1231050000001
+      ],
+      "U": 21602075.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Pallidum",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        1598.9,
+        1734.733582
+      ],
+      "U": 8049427.0,
+      "p_raw": 1.4104282615028132e-241,
+      "p_bonf": 1.2693854353525318e-239,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Pallidum",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        1598.9,
+        1592.1231050000001
+      ],
+      "U": 13112873.0,
+      "p_raw": 0.7537996903623739,
+      "p_bonf": 1.0,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Right-Pallidum",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        1734.733582,
+        1592.1231050000001
+      ],
+      "U": 18305578.0,
+      "p_raw": 2.1891823431883884e-268,
+      "p_bonf": 1.9702641088695496e-266,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        4138.45,
+        4206.0
+      ],
+      "U": 11814727.5,
+      "p_raw": 9.252982283441056e-16,
+      "p_bonf": 8.32768405509695e-14,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        4138.45,
+        3726.0
+      ],
+      "U": 19275254.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        4138.45,
+        4106.5005280000005
+      ],
+      "U": 13495953.0,
+      "p_raw": 0.010331777447560737,
+      "p_bonf": 0.9298599702804663,
+      "significant": false,
+      "result": "Fail to Reject"
+    },
+    {
+      "structure": "Right-Hippocampus",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        4206.0,
+        3726.0
+      ],
+      "U": 20161143.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Hippocampus",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        4206.0,
+        4106.5005280000005
+      ],
+      "U": 14724059.0,
+      "p_raw": 1.1093310041455491e-28,
+      "p_bonf": 9.983979037309943e-27,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Hippocampus",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        3726.0,
+        4106.5005280000005
+      ],
+      "U": 6789101.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        1673.1999999999998,
+        1799.25
+      ],
+      "U": 9198560.5,
+      "p_raw": 7.985464238648346e-145,
+      "p_bonf": 7.186917814783511e-143,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        1673.1999999999998,
+        1412.0
+      ],
+      "U": 20815782.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        1673.1999999999998,
+        1705.3377795000001
+      ],
+      "U": 12091735.0,
+      "p_raw": 9.042227916294119e-12,
+      "p_bonf": 8.138005124664707e-10,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Amygdala",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        1799.25,
+        1412.0
+      ],
+      "U": 23176751.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Amygdala",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        1799.25,
+        1705.3377795000001
+      ],
+      "U": 16271863.0,
+      "p_raw": 2.2175740666901156e-102,
+      "p_bonf": 1.9958166600211042e-100,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Amygdala",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        1412.0,
+        1705.3377795000001
+      ],
+      "U": 4149613.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        507.05,
+        612.6
+      ],
+      "U": 5737408.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        507.05,
+        408.172607
+      ],
+      "U": 19522759.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        507.05,
+        560.4723755
+      ],
+      "U": 8750799.0,
+      "p_raw": 8.085870512977122e-187,
+      "p_bonf": 7.277283461679409e-185,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Accumbens-area",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        612.6,
+        408.172607
+      ],
+      "U": 23991890.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Accumbens-area",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        612.6,
+        560.4723755
+      ],
+      "U": 17340801.0,
+      "p_raw": 1.7443265163587535e-180,
+      "p_bonf": 1.5698938647228783e-178,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Accumbens-area",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        408.172607,
+        560.4723755
+      ],
+      "U": 3267385.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    }
+  ],
+  "summary": [
+    {
+      "pipeline": "freesurfer741ants243",
+      "tests_rejected": 40,
+      "total_tests": 45,
+      "fraction": 0.8888888888888888
+    },
+    {
+      "pipeline": "freesurfer8001ants243",
+      "tests_rejected": 43,
+      "total_tests": 45,
+      "fraction": 0.9555555555555556
+    },
+    {
+      "pipeline": "fslanat6071ants243",
+      "tests_rejected": 41,
+      "total_tests": 45,
+      "fraction": 0.9111111111111111
+    },
+    {
+      "pipeline": "samseg8001ants243",
+      "tests_rejected": 38,
+      "total_tests": 45,
+      "fraction": 0.8444444444444444
+    }
+  ]
+}

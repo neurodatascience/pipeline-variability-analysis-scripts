@@ -1,0 +1,78 @@
+{
+    "metadata": {
+        "n_sessions": 5046,
+        "n_pipelines": 4
+    },
+    "anatomical_hierarchy": {
+        "Right-Accumbens-area": 525.548796,
+        "Left-Accumbens-area": 537.4449890000001,
+        "Left-Amygdala": 1583.747246,
+        "Right-Amygdala": 1646.6433390000002,
+        "Right-Pallidum": 1702.299563,
+        "Left-Pallidum": 1730.24658825,
+        "Left-Caudate": 3401.900287,
+        "Right-Caudate": 3486.80308675,
+        "Left-Hippocampus": 3941.2003555,
+        "Right-Hippocampus": 4046.811384,
+        "Right-Putamen": 4838.5411082499995,
+        "Left-Putamen": 4891.6677335,
+        "Right-Thalamus": 6927.8,
+        "Left-Thalamus": 7040.659837249999,
+        "Brainstem": 20429.292738
+    },
+    "hypothesis_1_scaling": {
+        "mean_rho": -0.3511904761904762,
+        "n_tests": 6,
+        "pairwise_results": [
+            {
+                "pair": "freesurfer741ants243 vs freesurfer8001ants243",
+                "rho": -0.7321428571428571,
+                "p": 0.0019129636009785611,
+                "p_adj": 0.011477781605871366,
+                "significant": true
+            },
+            {
+                "pair": "freesurfer741ants243 vs fslanat6071ants243",
+                "rho": -0.6071428571428571,
+                "p": 0.01638130676830708,
+                "p_adj": 0.09828784060984247,
+                "significant": false
+            },
+            {
+                "pair": "freesurfer741ants243 vs samseg8001ants243",
+                "rho": -0.1964285714285714,
+                "p": 0.4828987562716336,
+                "p_adj": 1.0,
+                "significant": false
+            },
+            {
+                "pair": "freesurfer8001ants243 vs fslanat6071ants243",
+                "rho": -0.48571428571428565,
+                "p": 0.06642631232518958,
+                "p_adj": 0.3985578739511375,
+                "significant": false
+            },
+            {
+                "pair": "freesurfer8001ants243 vs samseg8001ants243",
+                "rho": 0.017857142857142853,
+                "p": 0.9496353041738621,
+                "p_adj": 1.0,
+                "significant": false
+            },
+            {
+                "pair": "samseg8001ants243 vs fslanat6071ants243",
+                "rho": -0.10357142857142855,
+                "p": 0.7133796306287292,
+                "p_adj": 1.0,
+                "significant": false
+            }
+        ]
+    },
+    "hypothesis_2_fsl_bias": {
+        "fsl_median": 0.10236963868879566,
+        "other_median": 0.07300513747963903,
+        "p_val": 0.0,
+        "r_val": 0.1610818268975032,
+        "conclusion": "Significant difference detected (FSL pairings show higher RVD)."
+    }
+}
