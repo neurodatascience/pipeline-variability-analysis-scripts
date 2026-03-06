@@ -86,9 +86,22 @@ These scripts are for measuring disagreement, not for the ML models:
     * What it does: Statistically tests if structure volume predicts pipeline agreement and if FSL-based pairings show systematic bias.
     * Inputs: dice_overlap_tidy.csv from dice_hd95.py and df_tidy.csv from NeuroCI (https://github.com/neurodatascience/NeuroCI/blob/master/experiment_state/figures/df_tidy.csv)
     * Outputs: A JSON results file and console summary of Spearman correlations, Mann-Whitney U tests, and Bonferroni adjustments (subcortical_analysis_results.json).
+    * Uses Spearman’s $\rho$ to correlate median Dice coefficients with median structural volumes and a Mann-Whitney U test to compare Dice score distributions of FSL vs. non-FSL pipeline pairings. It applies Bonferroni adjustments to all resulting p-values.
 
 * **disagreement.py** - Pipeline Disagreement Analysis:
     * What it does: Quantifies and visualizes spatial "disagreement" between different neuroimaging pipelines by calculating voxel-wise XOR (Exclusive OR) maps of subcortical segmentations.
     * Inputs: MNI-space segmentation files from multiple pipelines and a standard MNI152 template.
     * Outputs: Global disagreement heatmaps (pipeline_disagreement_heatmap.png) overlaid on the MNI template and a statistical summary (pipeline_disagreement_statistics.csv).
     * python3 disagreement.py --threads 4
+
+* **volumetric_RVD_tests.py** - Relative Volume Difference Analysis:
+    * What it does: Analyzes Relative Volume Difference (RVD) to determine if structural size predicts pipeline disagreement and tests if FSL-based pipelines introduce systematic volumetric bias.
+    * Inputs: `df_tidy.csv`.
+    * Outputs: `volumetric_rvd_stats.json` and a CLI report featuring an anatomical hierarchy sorted by median volume.
+    * Calculates RVD as $|V_1 - V_2| / \text{mean}(V_1, V_2)$ for sessions common to all pipelines. It utilizes Spearman’s $\rho$ for correlation between volume and RVD, a one-sided Mann-Whitney U test for FSL bias, and applies Bonferroni adjustments to all p-values.
+
+* **volumetric_tests.py** - Formal Volumetric Statistical Analysis:
+    * What it does: Performs distributional and magnitude comparisons between pipelines to identify systematic shifts in volume estimation.
+    * Inputs: `df_tidy.csv`.
+    * Outputs: `volumetric_stat_results.json`.
+    * Employs Kolmogorov-Smirnov (K-S) tests to evaluate distributional similarity and two-sided Mann-Whitney U tests to assess stochastic equality between pipeline volumes. It applies a global Bonferroni correction ($m = n_{pairs} \times n_{structures}$) to all resulting p-values.
