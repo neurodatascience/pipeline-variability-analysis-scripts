@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from scipy.stats import mannwhitneyu, ks_2samp
+from scipy.stats import wilcoxon, ks_2samp
 import itertools
 import json
 
@@ -74,53 +74,78 @@ def run_scientific_stats(file_path='df_tidy.csv', output_file='volumetric_stat_r
             'details': struct_ks_details
         })
 
-    # --- SECTION 2: MAGNITUDE COMPARISONS (MANN-WHITNEY U) ---
-    print(f"\n[SECTION 2] MAGNITUDE COMPARISONS (Mann-Whitney U)")
-    print(f"H0: No systematic volume difference (Stochastic Equality). HA: One pipeline is systematically larger.")
+# --- SECTION 2: MAGNITUDE COMPARISONS (WILCOXON SIGNED-RANK) ---
+    print(f"\n[SECTION 2] MAGNITUDE COMPARISONS (Wilcoxon Signed-Rank Test)")
+    print(f"H0: The median of the differences between pipelines is zero. HA: There is a systematic shifting.")
     print("-" * 130)
 
     raw_results = []
     for struct in structures:
         struct_df = df[df['structure'] == struct]
         print(f"\nSTRUCTURE: {struct}")
+        
         for p1, p2 in itertools.combinations(pipelines, 2):
-            v1 = struct_df[struct_df['pipeline'] == p1]['volume_mm3']
-            v2 = struct_df[struct_df['pipeline'] == p2]['volume_mm3']
-            if len(v1) > 0 and len(v2) > 0:
-                u_stat, p_raw = mannwhitneyu(v1, v2, alternative='two-sided')
+            # Isolate data for both pipelines
+            df_p1 = struct_df[struct_df['pipeline'] == p1]
+            df_p2 = struct_df[struct_df['pipeline'] == p2]
+            
+            # Align pairs by subject identifier to guarantee correct matching.
+            # NOTE: Change 'subject' to your actual subject/ID column name if it differs.
+            id_col = 'subject' if 'subject' in df.columns else df.columns[0] 
+            
+            paired_df = pd.merge(
+                df_p1[[id_col, 'volume_mm3']], 
+                df_p2[[id_col, 'volume_mm3']], 
+                on=id_col, 
+                suffixes=('_p1', '_p2')
+            ).dropna()
+            
+            v1 = paired_df['volume_mm3_p1']
+            v2 = paired_df['volume_mm3_p2']
+            
+            # Wilcoxon requires at least some non-zero differences and matching lengths
+            if len(paired_df) > 0 and not (v1 == v2).all():
+                w_stat, p_raw = wilcoxon(v1, v2, alternative='two-sided')
                 med1, med2 = v1.median(), v2.median()
+                
                 raw_results.append({
                     'structure': struct, 'p1': p1, 'p2': p2,
                     'med1': med1, 'med2': med2,
-                    'u_stat': u_stat, 'p_raw': p_raw
+                    'w_stat': w_stat, 'p_raw': p_raw
                 })
                 # CLI print
-                print(f"  Mann-Whitney U: {p1} vs {p2} | U = {u_stat:.2f} | p_raw = {p_raw:.2e} | med1 = {med1:.2f} | med2 = {med2:.2f}")
+                print(f"  Wilcoxon Sign-Rank: {p1} vs {p2} | W = {w_stat:.2f} | p_raw = {p_raw:.2e} | med1 = {med1:.2f} | med2 = {med2:.2f}")
+            else:
+                print(f"  Wilcoxon Sign-Rank: {p1} vs {p2} | Skipped (insufficient paired data or identical values)")
 
-    res_df = pd.DataFrame(raw_results)
-    res_df['p_bonf'] = np.clip(res_df['p_raw'] * m_total, 0, 1.0)
-    res_df['sig'] = res_df['p_bonf'] < 0.05
+    if raw_results:
+        res_df = pd.DataFrame(raw_results)
+        res_df['p_bonf'] = np.clip(res_df['p_raw'] * m_total, 0, 1.0)
+        res_df['sig'] = res_df['p_bonf'] < 0.05
 
-    header = f"{'Structure':<20} | {'Comparison':<35} | {'Raw p':<12} | {'Bonf. p':<12} | {'Result'}"
-    print("\n" + header)
-    print("-" * len(header))
+        header = f"{'Structure':<20} | {'Comparison':<35} | {'Raw p':<12} | {'Bonf. p':<12} | {'Result'}"
+        print("\n" + header)
+        print("-" * len(header))
 
-    for _, row in res_df.iterrows():
-        higher = 'A' if row['med1'] > row['med2'] else 'B'
-        lower = 'B' if row['med1'] > row['med2'] else 'A'
-        res_text = f"Reject H0 ({higher} > {lower})" if row['sig'] else "Fail to Reject"
-        print(f"{row['structure']:<20} | {row['p1']+' vs '+row['p2']:<35} | {row['p_raw']:<12.2e} | {row['p_bonf']:<12.2e} | {res_text}")
+        for _, row in res_df.iterrows():
+            higher = 'A' if row['med1'] > row['med2'] else 'B'
+            lower = 'B' if row['med1'] > row['med2'] else 'A'
+            res_text = f"Reject H0 ({higher} > {lower})" if row['sig'] else "Fail to Reject"
+            print(f"{row['structure']:<20} | {row['p1']+' vs '+row['p2']:<35} | {row['p_raw']:<12.2e} | {row['p_bonf']:<12.2e} | {res_text}")
 
-        all_results['mwu_tests'].append({
-            'structure': row['structure'],
-            'pipeline_pair': f"{row['p1']} vs {row['p2']}",
-            'medians': [row['med1'], row['med2']],
-            'U': row['u_stat'],
-            'p_raw': row['p_raw'],
-            'p_bonf': row['p_bonf'],
-            'significant': row['sig'],
-            'result': res_text
-        })
+            all_results['mwu_tests'].append({
+                'structure': row['structure'],
+                'pipeline_pair': f"{row['p1']} vs {row['p2']}",
+                'medians': [row['med1'], row['med2']],
+                'W': row['w_stat'],
+                'p_raw': row['p_raw'],
+                'p_bonf': row['p_bonf'],
+                'significant': row['sig'],
+                'result': res_text
+            })
+    else:
+        # Fallback if no tests were run
+        res_df = pd.DataFrame(columns=['p1', 'p2', 'sig'])
 
     # --- SECTION 3: SUPERVISOR METRIC ---
     print(f"\n[SECTION 3] FRACTION OF TESTS REJECTED (Alpha = 0.05)")
