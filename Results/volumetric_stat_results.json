@@ -681,36 +681,10 @@
       "structure": "Left-Thalamus",
       "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
       "medians": [
-        7154.75,
-        6889.9
+        6714.5,
+        6591.6
       ],
-      "U": 14755489.0,
-      "p_raw": 8.456895743902951e-32,
-      "p_bonf": 7.611206169512657e-30,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Thalamus",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        7154.75,
-        7961.451732
-      ],
-      "U": 7694075.5,
-      "p_raw": 1.1189123338655781e-280,
-      "p_bonf": 1.0070211004790204e-278,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Thalamus",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        7154.75,
-        6165.5711995
-      ],
-      "U": 20585612.0,
+      "W": 53845992.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -718,12 +692,38 @@
     },
     {
       "structure": "Left-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        6714.3,
+        7692.337036
+      ],
+      "W": 5266667.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        6716.0,
+        6044.681334999999
+      ],
+      "W": 1840173.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Thalamus",
       "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
       "medians": [
-        6889.9,
-        7961.451732
+        6588.7,
+        7691.984412
       ],
-      "U": 5759680.5,
+      "W": 2019960.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -733,10 +733,10 @@
       "structure": "Left-Thalamus",
       "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
       "medians": [
-        6889.9,
-        6165.5711995
+        6590.3,
+        6044.447188
       ],
-      "U": 19266118.0,
+      "W": 2184663.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -746,10 +746,10 @@
       "structure": "Left-Thalamus",
       "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
       "medians": [
-        7961.451732,
-        6165.5711995
+        7693.2907104999995,
+        6041.842237
       ],
-      "U": 24783566.0,
+      "W": 694769.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -759,649 +759,649 @@
       "structure": "Left-Caudate",
       "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
       "medians": [
-        3317.45,
-        3602.1000000000004
-      ],
-      "U": 9100361.5,
-      "p_raw": 2.813733834802058e-152,
-      "p_bonf": 2.532360451321852e-150,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Caudate",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        3317.45,
-        3344.0
-      ],
-      "U": 12715502.0,
-      "p_raw": 0.03894956485169229,
-      "p_bonf": 1.0,
-      "significant": false,
-      "result": "Fail to Reject"
-    },
-    {
-      "structure": "Left-Caudate",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        3317.45,
-        3337.6199685
-      ],
-      "U": 12885937.0,
-      "p_raw": 0.13035748297428154,
-      "p_bonf": 1.0,
-      "significant": false,
-      "result": "Fail to Reject"
-    },
-    {
-      "structure": "Left-Caudate",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        3602.1000000000004,
-        3344.0
-      ],
-      "U": 16626377.0,
-      "p_raw": 1.946135936126795e-133,
-      "p_bonf": 1.7515223425141155e-131,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Caudate",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        3602.1000000000004,
-        3337.6199685
-      ],
-      "U": 17014877.0,
-      "p_raw": 2.5939632275728726e-154,
-      "p_bonf": 2.3345669048155854e-152,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Caudate",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        3344.0,
-        3337.6199685
-      ],
-      "U": 13194973.0,
-      "p_raw": 0.4369972516990279,
-      "p_bonf": 1.0,
-      "significant": false,
-      "result": "Fail to Reject"
-    },
-    {
-      "structure": "Left-Putamen",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        4586.450000000001,
-        5238.2
-      ],
-      "U": 6594053.5,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Putamen",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        4586.450000000001,
-        4712.0
-      ],
-      "U": 11733753.5,
-      "p_raw": 4.705406130840104e-18,
-      "p_bonf": 4.234865517756094e-16,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Putamen",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        4586.450000000001,
-        5033.380875999999
-      ],
-      "U": 8199833.0,
-      "p_raw": 1.9488047430834153e-236,
-      "p_bonf": 1.7539242687750738e-234,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Putamen",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        5238.2,
-        4712.0
-      ],
-      "U": 18459950.0,
-      "p_raw": 1.3454619584760378e-298,
-      "p_bonf": 1.210915762628434e-296,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Putamen",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        5238.2,
-        5033.380875999999
-      ],
-      "U": 15178888.0,
-      "p_raw": 1.6428245015449472e-45,
-      "p_bonf": 1.4785420513904525e-43,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Putamen",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        4712.0,
-        5033.380875999999
-      ],
-      "U": 9305440.0,
-      "p_raw": 6.96183351854678e-141,
-      "p_bonf": 6.265650166692102e-139,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Pallidum",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        1970.65,
-        1630.85
-      ],
-      "U": 22057469.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Pallidum",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        1970.65,
-        1724.0
-      ],
-      "U": 19936430.5,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Pallidum",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        1970.65,
-        1601.9276169999998
-      ],
-      "U": 22801590.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Pallidum",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        1630.85,
-        1724.0
-      ],
-      "U": 9515661.0,
-      "p_raw": 3.100118099901388e-120,
-      "p_bonf": 2.790106289911249e-118,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Pallidum",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        1630.85,
-        1601.9276169999998
-      ],
-      "U": 14005824.0,
-      "p_raw": 3.0202368911097834e-10,
-      "p_bonf": 2.718213201998805e-08,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Pallidum",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        1724.0,
-        1601.9276169999998
-      ],
-      "U": 17568447.0,
-      "p_raw": 1.4099087550211304e-198,
-      "p_bonf": 1.2689178795190173e-196,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Brainstem",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        20329.4,
-        20559.5
-      ],
-      "U": 12233812.0,
-      "p_raw": 1.800674804592851e-07,
-      "p_bonf": 1.620607324133566e-05,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Brainstem",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        20329.4,
-        21658.8974
-      ],
-      "U": 9328308.0,
-      "p_raw": 5.3804229413680626e-136,
-      "p_bonf": 4.842380647231256e-134,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Brainstem",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        20329.4,
-        19176.954296
-      ],
-      "U": 16969170.0,
-      "p_raw": 1.5331032492573281e-146,
-      "p_bonf": 1.3797929243315953e-144,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Brainstem",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        20559.5,
-        21658.8974
-      ],
-      "U": 10004566.0,
-      "p_raw": 3.538346219660441e-89,
-      "p_bonf": 3.184511597694397e-87,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Brainstem",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        20559.5,
-        19176.954296
-      ],
-      "U": 17647549.0,
-      "p_raw": 5.2345811497271394e-207,
-      "p_bonf": 4.711123034754426e-205,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Brainstem",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        21658.8974,
-        19176.954296
-      ],
-      "U": 20143417.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Hippocampus",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        3973.1,
-        4112.55
-      ],
-      "U": 10756689.0,
-      "p_raw": 7.608864845154703e-52,
-      "p_bonf": 6.847978360639233e-50,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Hippocampus",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        3973.1,
-        3648.757935
-      ],
-      "U": 18322741.5,
-      "p_raw": 1.1395372047251206e-277,
-      "p_bonf": 1.0255834842526086e-275,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Hippocampus",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        3973.1,
-        4028.672361
-      ],
-      "U": 12026691.0,
-      "p_raw": 3.99531700429689e-13,
-      "p_bonf": 3.595785303867201e-11,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Hippocampus",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        4112.55,
-        3648.757935
-      ],
-      "U": 19916433.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Hippocampus",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        4112.55,
-        4028.672361
-      ],
-      "U": 14377567.0,
-      "p_raw": 1.509391038508591e-18,
-      "p_bonf": 1.358451934657732e-16,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Hippocampus",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        3648.757935,
-        4028.672361
-      ],
-      "U": 6690467.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Amygdala",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        1562.65,
-        1733.55
-      ],
-      "U": 7598448.0,
-      "p_raw": 7.902935331153807e-290,
-      "p_bonf": 7.112641798038425e-288,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Amygdala",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        1562.65,
-        1422.0
-      ],
-      "U": 17717396.5,
-      "p_raw": 2.539939879444405e-218,
-      "p_bonf": 2.2859458914999647e-216,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Amygdala",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        1562.65,
-        1620.5113944999998
-      ],
-      "U": 11132274.0,
-      "p_raw": 5.5967676870526765e-40,
-      "p_bonf": 5.037090918347409e-38,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Amygdala",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        1733.55,
-        1422.0
-      ],
-      "U": 22457594.5,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Amygdala",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        1733.55,
-        1620.5113944999998
-      ],
-      "U": 17420453.0,
-      "p_raw": 3.394515300575472e-187,
-      "p_bonf": 3.055063770517925e-185,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Amygdala",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        1422.0,
-        1620.5113944999998
-      ],
-      "U": 5967291.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Accumbens-area",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        416.45,
-        609.8499999999999
-      ],
-      "U": 2724000.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Accumbens-area",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        416.45,
-        502.586365
-      ],
-      "U": 8114350.0,
-      "p_raw": 1.7848767413291843e-238,
-      "p_bonf": 1.6063890671962658e-236,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Accumbens-area",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        416.45,
-        613.5306370000001
-      ],
-      "U": 2387019.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Left-Accumbens-area",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        609.8499999999999,
-        502.586365
-      ],
-      "U": 20056279.5,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Left-Accumbens-area",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        609.8499999999999,
-        613.5306370000001
-      ],
-      "U": 12564073.0,
-      "p_raw": 0.000767829927675281,
-      "p_bonf": 0.06910469349077529,
-      "significant": false,
-      "result": "Fail to Reject"
-    },
-    {
-      "structure": "Left-Accumbens-area",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        502.586365,
-        613.5306370000001
-      ],
-      "U": 5429043.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Right-Thalamus",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        7186.3,
-        6675.8
-      ],
-      "U": 16674100.5,
-      "p_raw": 5.482923986434436e-134,
-      "p_bonf": 4.934631587790993e-132,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Right-Thalamus",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        7186.3,
-        7778.167725
-      ],
-      "U": 8821561.5,
-      "p_raw": 2.888621672724616e-175,
-      "p_bonf": 2.5997595054521544e-173,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Right-Thalamus",
-      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
-      "medians": [
-        7186.3,
-        6072.561716
-      ],
-      "U": 21591335.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Right-Thalamus",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        6675.8,
-        7778.167725
-      ],
-      "U": 5133645.5,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Right-Thalamus",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        6675.8,
-        6072.561716
-      ],
-      "U": 18665274.0,
-      "p_raw": 3.884641132478933e-308,
-      "p_bonf": 3.49617701923104e-306,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Right-Thalamus",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        7778.167725,
-        6072.561716
-      ],
-      "U": 24629135.0,
-      "p_raw": 0.0,
-      "p_bonf": 0.0,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Right-Caudate",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        3397.8,
-        3673.75
-      ],
-      "U": 9183539.5,
-      "p_raw": 5.949758967534397e-146,
-      "p_bonf": 5.354783070780957e-144,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Right-Caudate",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        3397.8,
+        3214.3,
         3448.0
       ],
-      "U": 12316009.5,
-      "p_raw": 2.048423633331342e-06,
-      "p_bonf": 0.0001843581269998208,
+      "W": 5179022.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        3215.0,
+        3228.0
+      ],
+      "W": 93465474.0,
+      "p_raw": 2.2317133761017495e-27,
+      "p_bonf": 2.0085420384915746e-25,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        3214.6,
+        3286.295181
+      ],
+      "W": 69467432.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        3451.3,
+        3227.0
+      ],
+      "W": 4345336.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        3450.65,
+        3286.4033584999997
+      ],
+      "W": 18844040.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Caudate",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        3228.0,
+        3285.94646
+      ],
+      "W": 77581719.0,
+      "p_raw": 4.366584672863451e-206,
+      "p_bonf": 3.9299262055771055e-204,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        4441.2,
+        5046.1
+      ],
+      "W": 1583430.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        4439.1,
+        4535.0
+      ],
+      "W": 64588337.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        4441.9,
+        4891.104044
+      ],
+      "W": 2937399.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        5045.7,
+        4535.0
+      ],
+      "W": 2734405.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        5047.7,
+        4890.126571000001
+      ],
+      "W": 32450248.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Putamen",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        4535.0,
+        4888.4706504999995
+      ],
+      "W": 9207485.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        1917.1,
+        1599.7
+      ],
+      "W": 642623.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        1917.3,
+        1710.891724
+      ],
+      "W": 13405837.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        1918.1,
+        1556.8202185
+      ],
+      "W": 382284.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        1599.1,
+        1710.891724
+      ],
+      "W": 38076120.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        1599.9,
+        1556.7577865
+      ],
+      "W": 67121080.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Pallidum",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        1710.0,
+        1555.9290409999999
+      ],
+      "W": 18116830.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        20170.9,
+        20413.1
+      ],
+      "W": 61058365.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        20160.0,
+        21612.167358
+      ],
+      "W": 12040327.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        20170.9,
+        19104.6169895
+      ],
+      "W": 7172197.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        20401.2,
+        21607.0
+      ],
+      "W": 12897004.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        20408.15,
+        19102.9259055
+      ],
+      "W": 1994808.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Brainstem",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        21597.0,
+        19086.323581
+      ],
+      "W": 2541695.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        3887.2,
+        3996.9
+      ],
+      "W": 45498433.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        3888.8500000000004,
+        3577.0
+      ],
+      "W": 12870056.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        3888.4,
+        3948.101652
+      ],
+      "W": 79116588.0,
+      "p_raw": 1.8106076249282205e-199,
+      "p_bonf": 1.6295468624353985e-197,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        3997.7,
+        3577.0
+      ],
+      "W": 2955919.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        3996.7,
+        3947.979448
+      ],
+      "W": 72737730.0,
+      "p_raw": 1.973391301913898e-304,
+      "p_bonf": 1.7760521717225084e-302,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Hippocampus",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        3576.996376,
+        3947.209025
+      ],
+      "W": 6742573.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        1564.6,
+        1691.5
+      ],
+      "W": 33297715.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        1564.6,
+        1401.0
+      ],
+      "W": 35942269.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        1564.6,
+        1605.0281605
+      ],
+      "W": 79950979.0,
+      "p_raw": 9.861860466443409e-187,
+      "p_bonf": 8.875674419799068e-185,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        1691.4,
+        1400.0
+      ],
+      "W": 3468942.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        1691.25,
+        1605.02081
+      ],
+      "W": 25494211.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Amygdala",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        1400.947571,
+        1604.570167
+      ],
+      "W": 11844223.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        420.3,
+        594.6
+      ],
+      "W": 644413.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        419.5,
+        484.0
+      ],
+      "W": 45521246.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        420.1,
+        602.629358
+      ],
+      "W": 427252.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        594.3,
+        483.512878
+      ],
+      "W": 7269003.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        594.6,
+        602.629358
+      ],
+      "W": 91763564.5,
+      "p_raw": 7.540842091601192e-49,
+      "p_bonf": 6.786757882441073e-47,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Left-Accumbens-area",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        483.512878,
+        601.937111
+      ],
+      "W": 4115722.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        6764.4,
+        6414.7
+      ],
+      "W": 14344997.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        6764.6,
+        7531.166077
+      ],
+      "W": 11686864.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
+      "medians": [
+        6766.9,
+        5915.866297
+      ],
+      "W": 485015.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        6414.1,
+        7530.0
+      ],
+      "W": 1739717.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        6414.9,
+        5915.620902
+      ],
+      "W": 2064245.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Thalamus",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        7532.0,
+        5913.866799
+      ],
+      "W": 732938.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        3302.8,
+        3524.9
+      ],
+      "W": 6808961.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        3304.2,
+        3335.0
+      ],
+      "W": 74657727.5,
+      "p_raw": 5.759726810215334e-245,
+      "p_bonf": 5.183754129193801e-243,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1409,90 +1409,90 @@
       "structure": "Right-Caudate",
       "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
       "medians": [
-        3397.8,
-        3428.7920135
+        3304.2,
+        3337.808875
       ],
-      "U": 12831160.0,
-      "p_raw": 0.06027016115956444,
+      "W": 88008881.0,
+      "p_raw": 1.5542731233882998e-85,
+      "p_bonf": 1.3988458110494697e-83,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
+      "medians": [
+        3525.8,
+        3334.0
+      ],
+      "W": 10640397.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
+      "medians": [
+        3525.9,
+        3337.808875
+      ],
+      "W": 10636325.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
+    },
+    {
+      "structure": "Right-Caudate",
+      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
+      "medians": [
+        3335.0,
+        3337.56051
+      ],
+      "W": 90400453.0,
+      "p_raw": 7.718529561698062e-53,
+      "p_bonf": 6.946676605528255e-51,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
+      "medians": [
+        4481.3,
+        4893.7
+      ],
+      "W": 3377987.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
+    },
+    {
+      "structure": "Right-Putamen",
+      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
+      "medians": [
+        4480.6,
+        4497.352384
+      ],
+      "W": 100803895.5,
+      "p_raw": 0.04259317896019645,
       "p_bonf": 1.0,
       "significant": false,
       "result": "Fail to Reject"
     },
     {
-      "structure": "Right-Caudate",
-      "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
-      "medians": [
-        3673.75,
-        3448.0
-      ],
-      "U": 16191966.0,
-      "p_raw": 5.305927039058505e-104,
-      "p_bonf": 4.775334335152654e-102,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Right-Caudate",
-      "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
-      "medians": [
-        3673.75,
-        3428.7920135
-      ],
-      "U": 16784088.0,
-      "p_raw": 4.960673076167518e-137,
-      "p_bonf": 4.464605768550766e-135,
-      "significant": true,
-      "result": "Reject H0 (A > B)"
-    },
-    {
-      "structure": "Right-Caudate",
-      "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
-      "medians": [
-        3448.0,
-        3428.7920135
-      ],
-      "U": 13533377.0,
-      "p_raw": 0.002339067054924176,
-      "p_bonf": 0.21051603494317586,
-      "significant": false,
-      "result": "Fail to Reject"
-    },
-    {
-      "structure": "Right-Putamen",
-      "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
-      "medians": [
-        4695.0,
-        5112.1
-      ],
-      "U": 8901447.5,
-      "p_raw": 5.929593850341064e-168,
-      "p_bonf": 5.336634465306958e-166,
-      "significant": true,
-      "result": "Reject H0 (B > A)"
-    },
-    {
-      "structure": "Right-Putamen",
-      "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
-      "medians": [
-        4695.0,
-        4669.189453
-      ],
-      "U": 13475146.5,
-      "p_raw": 0.002375910935428768,
-      "p_bonf": 0.21383198418858912,
-      "significant": false,
-      "result": "Fail to Reject"
-    },
-    {
       "structure": "Right-Putamen",
       "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
       "medians": [
-        4695.0,
-        4893.08364
+        4483.2,
+        4655.522736
       ],
-      "U": 11048178.0,
-      "p_raw": 2.697570132567781e-43,
-      "p_bonf": 2.427813119311003e-41,
+      "W": 28075358.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1500,12 +1500,12 @@
       "structure": "Right-Putamen",
       "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
       "medians": [
-        5112.1,
-        4669.189453
+        4893.0,
+        4497.0
       ],
-      "U": 17735127.5,
-      "p_raw": 2.1263445835782832e-225,
-      "p_bonf": 1.9137101252204547e-223,
+      "W": 6064620.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (A > B)"
     },
@@ -1513,12 +1513,12 @@
       "structure": "Right-Putamen",
       "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
       "medians": [
-        5112.1,
-        4893.08364
+        4894.2,
+        4654.544152
       ],
-      "U": 15327783.0,
-      "p_raw": 6.828370341188382e-52,
-      "p_bonf": 6.145533307069544e-50,
+      "W": 13729667.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (A > B)"
     },
@@ -1526,12 +1526,12 @@
       "structure": "Right-Putamen",
       "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
       "medians": [
-        4669.189453,
-        4893.08364
+        4497.0,
+        4653.248938
       ],
-      "U": 10457085.0,
-      "p_raw": 5.242650850702124e-69,
-      "p_bonf": 4.718385765631912e-67,
+      "W": 37443937.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1539,10 +1539,10 @@
       "structure": "Right-Pallidum",
       "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
       "medians": [
-        1883.35,
-        1598.9
+        1827.2,
+        1552.4
       ],
-      "U": 21222253.5,
+      "W": 767466.5,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1552,12 +1552,12 @@
       "structure": "Right-Pallidum",
       "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
       "medians": [
-        1883.35,
-        1734.733582
+        1826.7,
+        1711.0
       ],
-      "U": 17498050.5,
-      "p_raw": 1.3751214613787994e-198,
-      "p_bonf": 1.2376093152409194e-196,
+      "W": 43271466.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (A > B)"
     },
@@ -1565,10 +1565,10 @@
       "structure": "Right-Pallidum",
       "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
       "medians": [
-        1883.35,
-        1592.1231050000001
+        1827.5,
+        1560.9092974999999
       ],
-      "U": 21602075.0,
+      "W": 1304628.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1578,12 +1578,12 @@
       "structure": "Right-Pallidum",
       "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
       "medians": [
-        1598.9,
-        1734.733582
+        1551.5,
+        1710.891724
       ],
-      "U": 8049427.0,
-      "p_raw": 1.4104282615028132e-241,
-      "p_bonf": 1.2693854353525318e-239,
+      "W": 19765099.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1591,25 +1591,25 @@
       "structure": "Right-Pallidum",
       "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
       "medians": [
-        1598.9,
-        1592.1231050000001
+        1552.9,
+        1560.975735
       ],
-      "U": 13112873.0,
-      "p_raw": 0.7537996903623739,
-      "p_bonf": 1.0,
-      "significant": false,
-      "result": "Fail to Reject"
+      "W": 88662681.0,
+      "p_raw": 2.1331638946032266e-75,
+      "p_bonf": 1.9198475051429038e-73,
+      "significant": true,
+      "result": "Reject H0 (B > A)"
     },
     {
       "structure": "Right-Pallidum",
       "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
       "medians": [
-        1734.733582,
-        1592.1231050000001
+        1710.891724,
+        1559.731036
       ],
-      "U": 18305578.0,
-      "p_raw": 2.1891823431883884e-268,
-      "p_bonf": 1.9702641088695496e-266,
+      "W": 15707745.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (A > B)"
     },
@@ -1617,12 +1617,12 @@
       "structure": "Right-Hippocampus",
       "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
       "medians": [
-        4138.45,
-        4206.0
+        4032.3,
+        4098.1
       ],
-      "U": 11814727.5,
-      "p_raw": 9.252982283441056e-16,
-      "p_bonf": 8.32768405509695e-14,
+      "W": 66518927.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1630,10 +1630,10 @@
       "structure": "Right-Hippocampus",
       "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
       "medians": [
-        4138.45,
-        3726.0
+        4032.45,
+        3665.0
       ],
-      "U": 19275254.5,
+      "W": 7752769.5,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1643,23 +1643,23 @@
       "structure": "Right-Hippocampus",
       "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
       "medians": [
-        4138.45,
-        4106.5005280000005
+        4033.6,
+        4023.617626
       ],
-      "U": 13495953.0,
-      "p_raw": 0.010331777447560737,
-      "p_bonf": 0.9298599702804663,
-      "significant": false,
-      "result": "Fail to Reject"
+      "W": 95925019.0,
+      "p_raw": 1.5629742215183959e-24,
+      "p_bonf": 1.4066767993665563e-22,
+      "significant": true,
+      "result": "Reject H0 (A > B)"
     },
     {
       "structure": "Right-Hippocampus",
       "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
       "medians": [
-        4206.0,
-        3726.0
+        4097.4,
+        3664.016724
       ],
-      "U": 20161143.0,
+      "W": 3205260.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1669,12 +1669,12 @@
       "structure": "Right-Hippocampus",
       "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
       "medians": [
-        4206.0,
-        4106.5005280000005
+        4098.1,
+        4022.3155075
       ],
-      "U": 14724059.0,
-      "p_raw": 1.1093310041455491e-28,
-      "p_bonf": 9.983979037309943e-27,
+      "W": 62390764.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (A > B)"
     },
@@ -1682,10 +1682,10 @@
       "structure": "Right-Hippocampus",
       "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
       "medians": [
-        3726.0,
-        4106.5005280000005
+        3664.016724,
+        4020.518339
       ],
-      "U": 6789101.0,
+      "W": 6098807.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1695,12 +1695,12 @@
       "structure": "Right-Amygdala",
       "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
       "medians": [
-        1673.1999999999998,
-        1799.25
+        1653.1,
+        1747.7
       ],
-      "U": 9198560.5,
-      "p_raw": 7.985464238648346e-145,
-      "p_bonf": 7.186917814783511e-143,
+      "W": 43999947.5,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1708,10 +1708,10 @@
       "structure": "Right-Amygdala",
       "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
       "medians": [
-        1673.1999999999998,
-        1412.0
+        1653.1,
+        1395.0
       ],
-      "U": 20815782.5,
+      "W": 11538614.5,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1721,12 +1721,12 @@
       "structure": "Right-Amygdala",
       "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
       "medians": [
-        1673.1999999999998,
-        1705.3377795000001
+        1653.1,
+        1680.693038
       ],
-      "U": 12091735.0,
-      "p_raw": 9.042227916294119e-12,
-      "p_bonf": 8.138005124664707e-10,
+      "W": 86991921.0,
+      "p_raw": 3.95492404669792e-96,
+      "p_bonf": 3.559431642028128e-94,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1734,10 +1734,10 @@
       "structure": "Right-Amygdala",
       "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
       "medians": [
-        1799.25,
-        1412.0
+        1747.5,
+        1394.0
       ],
-      "U": 23176751.5,
+      "W": 2076726.5,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1747,12 +1747,12 @@
       "structure": "Right-Amygdala",
       "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
       "medians": [
-        1799.25,
-        1705.3377795000001
+        1747.45,
+        1679.60485
       ],
-      "U": 16271863.0,
-      "p_raw": 2.2175740666901156e-102,
-      "p_bonf": 1.9958166600211042e-100,
+      "W": 43102302.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (A > B)"
     },
@@ -1760,10 +1760,10 @@
       "structure": "Right-Amygdala",
       "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
       "medians": [
-        1412.0,
-        1705.3377795000001
+        1394.0,
+        1679.2224274999999
       ],
-      "U": 4149613.0,
+      "W": 3642210.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1773,10 +1773,10 @@
       "structure": "Right-Accumbens-area",
       "pipeline_pair": "freesurfer741ants243 vs freesurfer8001ants243",
       "medians": [
-        507.05,
-        612.6
+        497.4,
+        598.6
       ],
-      "U": 5737408.5,
+      "W": 3840417.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1786,10 +1786,10 @@
       "structure": "Right-Accumbens-area",
       "pipeline_pair": "freesurfer741ants243 vs fslanat6071ants243",
       "medians": [
-        507.05,
-        408.172607
+        497.4,
+        387.191772
       ],
-      "U": 19522759.5,
+      "W": 9433370.5,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1799,12 +1799,12 @@
       "structure": "Right-Accumbens-area",
       "pipeline_pair": "freesurfer741ants243 vs samseg8001ants243",
       "medians": [
-        507.05,
-        560.4723755
+        497.6,
+        545.918794
       ],
-      "U": 8750799.0,
-      "p_raw": 8.085870512977122e-187,
-      "p_bonf": 7.277283461679409e-185,
+      "W": 34977997.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (B > A)"
     },
@@ -1812,10 +1812,10 @@
       "structure": "Right-Accumbens-area",
       "pipeline_pair": "freesurfer8001ants243 vs fslanat6071ants243",
       "medians": [
-        612.6,
-        408.172607
+        598.5,
+        387.191772
       ],
-      "U": 23991890.5,
+      "W": 290551.5,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1825,12 +1825,12 @@
       "structure": "Right-Accumbens-area",
       "pipeline_pair": "freesurfer8001ants243 vs samseg8001ants243",
       "medians": [
-        612.6,
-        560.4723755
+        598.6,
+        545.8530435
       ],
-      "U": 17340801.0,
-      "p_raw": 1.7443265163587535e-180,
-      "p_bonf": 1.5698938647228783e-178,
+      "W": 24156165.0,
+      "p_raw": 0.0,
+      "p_bonf": 0.0,
       "significant": true,
       "result": "Reject H0 (A > B)"
     },
@@ -1838,10 +1838,10 @@
       "structure": "Right-Accumbens-area",
       "pipeline_pair": "fslanat6071ants243 vs samseg8001ants243",
       "medians": [
-        408.172607,
-        560.4723755
+        387.191772,
+        545.6428735
       ],
-      "U": 3267385.0,
+      "W": 887546.0,
       "p_raw": 0.0,
       "p_bonf": 0.0,
       "significant": true,
@@ -1851,27 +1851,27 @@
   "summary": [
     {
       "pipeline": "freesurfer741ants243",
-      "tests_rejected": 40,
+      "tests_rejected": 44,
       "total_tests": 45,
-      "fraction": 0.8888888888888888
+      "fraction": 0.9777777777777777
     },
     {
       "pipeline": "freesurfer8001ants243",
-      "tests_rejected": 43,
+      "tests_rejected": 45,
       "total_tests": 45,
-      "fraction": 0.9555555555555556
+      "fraction": 1.0
     },
     {
       "pipeline": "fslanat6071ants243",
-      "tests_rejected": 41,
+      "tests_rejected": 44,
       "total_tests": 45,
-      "fraction": 0.9111111111111111
+      "fraction": 0.9777777777777777
     },
     {
       "pipeline": "samseg8001ants243",
-      "tests_rejected": 38,
+      "tests_rejected": 45,
       "total_tests": 45,
-      "fraction": 0.8444444444444444
+      "fraction": 1.0
     }
   ]
 }
